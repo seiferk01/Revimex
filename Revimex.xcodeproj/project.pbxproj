@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		52B7200B1FA785F500F447DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7200A1FA785F500F447DA /* AppDelegate.swift */; };
+		52B7200D1FA785F500F447DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7200C1FA785F500F447DA /* ViewController.swift */; };
+		52B720101FA785F500F447DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B7200E1FA785F500F447DA /* Main.storyboard */; };
+		52B720121FA785F500F447DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52B720111FA785F500F447DA /* Assets.xcassets */; };
+		52B720151FA785F500F447DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B720131FA785F500F447DA /* LaunchScreen.storyboard */; };
+		52B720201FA785F500F447DA /* RevimexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7201F1FA785F500F447DA /* RevimexTests.swift */; };
+		52B7202B1FA785F500F447DA /* RevimexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B7202A1FA785F500F447DA /* RevimexUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52B7201C1FA785F500F447DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52B71FFF1FA785F500F447DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B720061FA785F500F447DA;
+			remoteInfo = Revimex;
+		};
+		52B720271FA785F500F447DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52B71FFF1FA785F500F447DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B720061FA785F500F447DA;
+			remoteInfo = Revimex;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		52B720071FA785F500F447DA /* Revimex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Revimex.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B7200A1FA785F500F447DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		52B7200C1FA785F500F447DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		52B7200F1FA785F500F447DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		52B720111FA785F500F447DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		52B720141FA785F500F447DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		52B720161FA785F500F447DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52B7201B1FA785F500F447DA /* RevimexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RevimexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B7201F1FA785F500F447DA /* RevimexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevimexTests.swift; sourceTree = "<group>"; };
+		52B720211FA785F500F447DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52B720261FA785F500F447DA /* RevimexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RevimexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B7202A1FA785F500F447DA /* RevimexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevimexUITests.swift; sourceTree = "<group>"; };
+		52B7202C1FA785F500F447DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		52B720041FA785F500F447DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B720181FA785F500F447DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B720231FA785F500F447DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		52B71FFE1FA785F400F447DA = {
+			isa = PBXGroup;
+			children = (
+				52B720091FA785F500F447DA /* Revimex */,
+				52B7201E1FA785F500F447DA /* RevimexTests */,
+				52B720291FA785F500F447DA /* RevimexUITests */,
+				52B720081FA785F500F447DA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		52B720081FA785F500F447DA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52B720071FA785F500F447DA /* Revimex.app */,
+				52B7201B1FA785F500F447DA /* RevimexTests.xctest */,
+				52B720261FA785F500F447DA /* RevimexUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52B720091FA785F500F447DA /* Revimex */ = {
+			isa = PBXGroup;
+			children = (
+				52B7200A1FA785F500F447DA /* AppDelegate.swift */,
+				52B7200C1FA785F500F447DA /* ViewController.swift */,
+				52B7200E1FA785F500F447DA /* Main.storyboard */,
+				52B720111FA785F500F447DA /* Assets.xcassets */,
+				52B720131FA785F500F447DA /* LaunchScreen.storyboard */,
+				52B720161FA785F500F447DA /* Info.plist */,
+			);
+			path = Revimex;
+			sourceTree = "<group>";
+		};
+		52B7201E1FA785F500F447DA /* RevimexTests */ = {
+			isa = PBXGroup;
+			children = (
+				52B7201F1FA785F500F447DA /* RevimexTests.swift */,
+				52B720211FA785F500F447DA /* Info.plist */,
+			);
+			path = RevimexTests;
+			sourceTree = "<group>";
+		};
+		52B720291FA785F500F447DA /* RevimexUITests */ = {
+			isa = PBXGroup;
+			children = (
+				52B7202A1FA785F500F447DA /* RevimexUITests.swift */,
+				52B7202C1FA785F500F447DA /* Info.plist */,
+			);
+			path = RevimexUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		52B720061FA785F500F447DA /* Revimex */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52B7202F1FA785F500F447DA /* Build configuration list for PBXNativeTarget "Revimex" */;
+			buildPhases = (
+				52B720031FA785F500F447DA /* Sources */,
+				52B720041FA785F500F447DA /* Frameworks */,
+				52B720051FA785F500F447DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Revimex;
+			productName = Revimex;
+			productReference = 52B720071FA785F500F447DA /* Revimex.app */;
+			productType = "com.apple.product-type.application";
+		};
+		52B7201A1FA785F500F447DA /* RevimexTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52B720321FA785F500F447DA /* Build configuration list for PBXNativeTarget "RevimexTests" */;
+			buildPhases = (
+				52B720171FA785F500F447DA /* Sources */,
+				52B720181FA785F500F447DA /* Frameworks */,
+				52B720191FA785F500F447DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52B7201D1FA785F500F447DA /* PBXTargetDependency */,
+			);
+			name = RevimexTests;
+			productName = RevimexTests;
+			productReference = 52B7201B1FA785F500F447DA /* RevimexTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		52B720251FA785F500F447DA /* RevimexUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52B720351FA785F500F447DA /* Build configuration list for PBXNativeTarget "RevimexUITests" */;
+			buildPhases = (
+				52B720221FA785F500F447DA /* Sources */,
+				52B720231FA785F500F447DA /* Frameworks */,
+				52B720241FA785F500F447DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52B720281FA785F500F447DA /* PBXTargetDependency */,
+			);
+			name = RevimexUITests;
+			productName = RevimexUITests;
+			productReference = 52B720261FA785F500F447DA /* RevimexUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		52B71FFF1FA785F500F447DA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = Revimex;
+				TargetAttributes = {
+					52B720061FA785F500F447DA = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					52B7201A1FA785F500F447DA = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 52B720061FA785F500F447DA;
+					};
+					52B720251FA785F500F447DA = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 52B720061FA785F500F447DA;
+					};
+				};
+			};
+			buildConfigurationList = 52B720021FA785F500F447DA /* Build configuration list for PBXProject "Revimex" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 52B71FFE1FA785F400F447DA;
+			productRefGroup = 52B720081FA785F500F447DA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				52B720061FA785F500F447DA /* Revimex */,
+				52B7201A1FA785F500F447DA /* RevimexTests */,
+				52B720251FA785F500F447DA /* RevimexUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		52B720051FA785F500F447DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B720151FA785F500F447DA /* LaunchScreen.storyboard in Resources */,
+				52B720121FA785F500F447DA /* Assets.xcassets in Resources */,
+				52B720101FA785F500F447DA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B720191FA785F500F447DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B720241FA785F500F447DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52B720031FA785F500F447DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B7200D1FA785F500F447DA /* ViewController.swift in Sources */,
+				52B7200B1FA785F500F447DA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B720171FA785F500F447DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B720201FA785F500F447DA /* RevimexTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52B720221FA785F500F447DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52B7202B1FA785F500F447DA /* RevimexUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52B7201D1FA785F500F447DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52B720061FA785F500F447DA /* Revimex */;
+			targetProxy = 52B7201C1FA785F500F447DA /* PBXContainerItemProxy */;
+		};
+		52B720281FA785F500F447DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52B720061FA785F500F447DA /* Revimex */;
+			targetProxy = 52B720271FA785F500F447DA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		52B7200E1FA785F500F447DA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52B7200F1FA785F500F447DA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		52B720131FA785F500F447DA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52B720141FA785F500F447DA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		52B7202D1FA785F500F447DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		52B7202E1FA785F500F447DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		52B720301FA785F500F447DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9K97DWZW76;
+				INFOPLIST_FILE = Revimex/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Revimex.Revimex;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		52B720311FA785F500F447DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9K97DWZW76;
+				INFOPLIST_FILE = Revimex/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Revimex.Revimex;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		52B720331FA785F500F447DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9K97DWZW76;
+				INFOPLIST_FILE = RevimexTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Revimex.RevimexTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Revimex.app/Revimex";
+			};
+			name = Debug;
+		};
+		52B720341FA785F500F447DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9K97DWZW76;
+				INFOPLIST_FILE = RevimexTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Revimex.RevimexTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Revimex.app/Revimex";
+			};
+			name = Release;
+		};
+		52B720361FA785F500F447DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9K97DWZW76;
+				INFOPLIST_FILE = RevimexUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Revimex.RevimexUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Revimex;
+			};
+			name = Debug;
+		};
+		52B720371FA785F500F447DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9K97DWZW76;
+				INFOPLIST_FILE = RevimexUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Revimex.RevimexUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Revimex;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		52B720021FA785F500F447DA /* Build configuration list for PBXProject "Revimex" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52B7202D1FA785F500F447DA /* Debug */,
+				52B7202E1FA785F500F447DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52B7202F1FA785F500F447DA /* Build configuration list for PBXNativeTarget "Revimex" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52B720301FA785F500F447DA /* Debug */,
+				52B720311FA785F500F447DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52B720321FA785F500F447DA /* Build configuration list for PBXNativeTarget "RevimexTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52B720331FA785F500F447DA /* Debug */,
+				52B720341FA785F500F447DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52B720351FA785F500F447DA /* Build configuration list for PBXNativeTarget "RevimexUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52B720361FA785F500F447DA /* Debug */,
+				52B720371FA785F500F447DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 52B71FFF1FA785F500F447DA /* Project object */;
+}

@@ -9,8 +9,7 @@
 import UIKit
 import Mapbox
 
-//variable global, obtiene un valor en TableViewCell.swift dependiendo de la propiedad que se selecciono
-var idOfertaSeleccionada = ""
+
 
 class DescriptionViewController: UIViewController, MGLMapViewDelegate {
     
@@ -20,6 +19,7 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
     
     @IBOutlet weak var descripcion: UITextView!
     @IBOutlet weak var contenedorCarousel: UIScrollView!
+    @IBOutlet weak var favoritosBtn: UIButton!
     
     
     //variables para mapbox
@@ -35,6 +35,12 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        favoritosBtn.setBackgroundImage(UIImage(named: "favorites.png") as UIImage?, for: .normal)
+        
+        //verificar favoritos
+        self.revisarFavoritos()
+        
+        //oculta el contenedor del carrusel
         contenedorCarousel.isHidden = true
         
         //request a detalles
@@ -44,7 +50,6 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -102,17 +107,18 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
         mapView.delegate = self
         view.addSubview(mapView)
         
+        //agrega el marcador principal
         addPrincipalMarker()
         
     }
     
-    //acciondel boton para mostrar las fotos
+    //accion del boton fotos
     @IBAction func showPhotos(_ sender: Any) {
         
         descripcion.isHidden = true
         contenedorCarousel.isHidden = false
         
-        var ancho = contenedorCarousel.bounds.width
+        let ancho = contenedorCarousel.bounds.width
         let largo = contenedorCarousel.bounds.height
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(carouselTapped(tapGestureRecognizer:)))
@@ -126,16 +132,14 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
         for (index, url) in propiedad.fotos.enumerated() {
             let data = Utilities.traerImagen(urlImagen: url)
 
-            if data != nil {
-                let image = UIImage(data: data as! Data)
-                
-                let marco = UIImageView(image: image)
-                marco.frame.origin.x = ancho * CGFloat(index)
-                marco.frame.origin.y = 0
-                marco.frame.size = CGSize(width: ancho, height: largo)
-                contenedorCarousel.addSubview(marco)
-                
-            }
+            let image = UIImage(data: data as Data)
+            
+            let marco = UIImageView(image: image)
+            marco.frame.origin.x = ancho * CGFloat(index)
+            marco.frame.origin.y = 0
+            marco.frame.size = CGSize(width: ancho, height: largo)
+            contenedorCarousel.addSubview(marco)
+               
         }
         
         
@@ -144,14 +148,12 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
     //accion al presionar en el carousel de fotos pequeño
     @objc func carouselTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         
-        let tappedImage = tapGestureRecognizer.view as! UIScrollView
-        
         vistaCarouselGrande.frame = CGRect(x: 0 ,y: 0 ,width: self.view.frame.width,height: self.view.frame.height)
         vistaCarouselGrande.backgroundColor = UIColor.black
         vistaCarouselGrande.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
         
-        var ancho = view.bounds.width
+        let ancho = view.bounds.width
         let largo = view.bounds.height
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageBigCarouselTapped(tapGestureRecognizer:)))
@@ -160,7 +162,7 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
         
         
         contenedorCarouselGrande.frame.size = CGSize(width: view.bounds.width, height: view.bounds.width * (0.8))
-        contenedorCarouselGrande.contentSize = CGSize(width: ancho * CGFloat(propiedad.fotos.count), height: largo/2)
+        contenedorCarouselGrande.contentSize = CGSize(width: ancho * CGFloat(propiedad.fotos.count), height: view.bounds.width * (0.8))
         contenedorCarouselGrande.frame.origin.x = 0
         contenedorCarouselGrande.frame.origin.y = largo/4
         contenedorCarouselGrande.isPagingEnabled = true
@@ -170,16 +172,14 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
         for (index, url) in propiedad.fotos.enumerated() {
             let data = Utilities.traerImagen(urlImagen: url)
 
-            if data != nil {
-                let image = UIImage(data: data as! Data)
+            let image = UIImage(data: data as Data)
 
-                let marco = UIImageView(image: image)
-                marco.frame.origin.x = ancho * CGFloat(index)
-                marco.frame.origin.y = 0
-                marco.frame.size = CGSize(width: ancho, height: view.bounds.width)
-                contenedorCarouselGrande.addSubview(marco)
+            let marco = UIImageView(image: image)
+            marco.frame.origin.x = ancho * CGFloat(index)
+            marco.frame.origin.y = 0
+            marco.frame.size = CGSize(width: ancho, height: view.bounds.width * (0.8))
+            contenedorCarouselGrande.addSubview(marco)
 
-            }
         }
         
         vistaCarouselGrande.addSubview(contenedorCarouselGrande)
@@ -216,12 +216,10 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
         request.httpBody = httpBody
         
         let session  = URLSession.shared
-        print(session)
         session.dataTask(with: request) { (data, response, error) in
             
             if let response = response {
                 print(response)
-                print(data)
             }
             
             if let data = data {
@@ -230,39 +228,40 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
                     let json = try JSONSerialization.jsonObject (with: data) as! [String:Any?]
                     
                     
-                    let propiedadSeleccionada = json["propiedad"] as! NSDictionary
-                    print("*********Propiedad seleccionada***********")
-                    print(propiedadSeleccionada)
-                    
-                    //                    if !(propiedadSeleccionada["Id"] is NSNull) { propiedad.Id = propiedadSeleccionada["Id"] as! String }
-                    if !(propiedadSeleccionada["calle"] is NSNull) { self.propiedad.calle = propiedadSeleccionada["calle"] as! String }
-                    if !(propiedadSeleccionada["colonia"] is NSNull) { self.propiedad.colonia = propiedadSeleccionada["colonia"] as! String }
-                    if !(propiedadSeleccionada["construccion"] is NSNull) { self.propiedad.construccion = "Metros de construccion: " + (propiedadSeleccionada["construccion"] as! String) + "\n"}
-                    if !(propiedadSeleccionada["cp"] is NSNull) { self.propiedad.cp = "C.P. " + (propiedadSeleccionada["cp"] as! String) }
-                    if !(propiedadSeleccionada["estacionamiento"] is NSNull) { self.propiedad.estacionamiento = "Estacionamientos: " + (propiedadSeleccionada["estacionamiento"] as! String) + "\n"}
-                    if !(propiedadSeleccionada["estado"] is NSNull) { self.propiedad.estado = propiedadSeleccionada["estado"] as! String }
-                    if !(propiedadSeleccionada["habitaciones"] is NSNull) { self.propiedad.habitaciones = "Habitaciones: " + (propiedadSeleccionada["habitaciones"] as! String) + "\n"}
-                    //                    if !(propiedadSeleccionada["idp"] is NSNull) { propiedad.idp = propiedadSeleccionada["idp"] as! String }
-                    if !(propiedadSeleccionada["lat"] is NSNull) { self.propiedad.lat = propiedadSeleccionada["lat"] as! String }
-                    if !(propiedadSeleccionada["lon"] is NSNull) { self.propiedad.lon = propiedadSeleccionada["lon"] as! String }
-                    if !(propiedadSeleccionada["municipio"] is NSNull) { self.propiedad.municipio = propiedadSeleccionada["municipio"] as! String }
-                    if !(propiedadSeleccionada["niveles"] is NSNull) { self.propiedad.niveles = "Niveles: " + (propiedadSeleccionada["niveles"] as! String) + "\n"}
-                    if !(propiedadSeleccionada["origen_propiedad"] is NSNull) { self.propiedad.origen_propiedad = propiedadSeleccionada["origen_propiedad"] as! String }
-                    if !(propiedadSeleccionada["patios"] is NSNull) { self.propiedad.patios = "Patios: " + (propiedadSeleccionada["patios"] as! String) + "\n"}
-                    if !(propiedadSeleccionada["precio"] is NSNull) { self.propiedad.precio = "Precio: $" + (propiedadSeleccionada["precio"] as! String) + "\n"}
-                    if !(propiedadSeleccionada["terreno"] is NSNull) { self.propiedad.terreno = "Metros de terreno: " + (propiedadSeleccionada["terreno"] as! String) + "\n"}
-                    if !(propiedadSeleccionada["tipo"] is NSNull) { self.propiedad.tipo = "Tipo de inmuble: " + (propiedadSeleccionada["tipo"] as! String) + "\n"}
-                    if !(propiedadSeleccionada["descripcion"] is NSNull) { self.propiedad.descripcion = propiedadSeleccionada["descripcion"] as! String }
-                    if !(propiedadSeleccionada["pros"] is NSNull) { self.propiedad.pros = propiedadSeleccionada["pros"] as! String }
-                    //                    if !(propiedadSeleccionada["wcs"] is NSNull) { propiedad.wcs = propiedadSeleccionada["wcs"] as! String }
-                    if !(propiedadSeleccionada["files"] is NSNull) {
-                        let files = propiedadSeleccionada["files"] as! Array<Any?>
-                        for element in files{
-                            let file = element as! NSDictionary
-                            if !(file["linkPublico"] is NSNull){
-                                let url = file["linkPublico"] as! String
-                                self.propiedad.fotos.append(url)
-                                print(self.propiedad.fotos)
+                    if let propiedadSeleccionada = json["propiedad"] as? NSDictionary {
+                        print("*********Propiedad seleccionada***********")
+                        print(propiedadSeleccionada)
+                        
+                        if  let id = propiedadSeleccionada["Id"] as? String { self.propiedad.Id = id }
+                        if  let calle = propiedadSeleccionada["calle"] as? String { self.propiedad.calle = calle }
+                        if  let colonia = propiedadSeleccionada["colonia"] as? String { self.propiedad.colonia = colonia }
+                        if  let construccion = propiedadSeleccionada["construccion"] as? String { self.propiedad.construccion = "Metros de construccion: " + construccion + "\n"}
+                        if  let cp = propiedadSeleccionada["cp"] as? String { self.propiedad.cp = "C.P. " + cp }
+                        if  let estacionamiento = propiedadSeleccionada["estacionamiento"] as? String { self.propiedad.estacionamiento = "Estacionamientos: " + estacionamiento + "\n"}
+                        if  let estado = propiedadSeleccionada["estado"] as? String { self.propiedad.estado = estado }
+                        if  let habitaciones = propiedadSeleccionada["habitaciones"] as? String { self.propiedad.habitaciones = "Habitaciones: " + habitaciones + "\n"}
+                        if  let idp = propiedadSeleccionada["idp"] as? String { self.propiedad.idp = idp }
+                        if  let lat = propiedadSeleccionada["lat"] as? String { self.propiedad.lat = lat }
+                        if  let lon = propiedadSeleccionada["lon"] as? String { self.propiedad.lon = lon }
+                        if  let municipio = propiedadSeleccionada["municipio"] as? String { self.propiedad.municipio = municipio }
+                        if  let niveles = propiedadSeleccionada["niveles"] as? String { self.propiedad.niveles = "Niveles: " + niveles + "\n"}
+                        if  let origen_propiedad = propiedadSeleccionada["origen_propiedad"] as? String { self.propiedad.origen_propiedad = origen_propiedad }
+                        if  let patios = propiedadSeleccionada["patios"] as? String { self.propiedad.patios = "Patios: " + patios + "\n"}
+                        if  let precio = propiedadSeleccionada["precio"] as? String { self.propiedad.precio = "Precio: $" + precio + "\n"}
+                        if  let terreno = propiedadSeleccionada["terreno"] as? String { self.propiedad.terreno = "Metros de terreno: " + terreno + "\n"}
+                        if  let tipo = propiedadSeleccionada["tipo"] as? String { self.propiedad.tipo = "Tipo de inmuble: " + tipo + "\n"}
+                        if  let descripcion = propiedadSeleccionada["descripcion"] as? String { self.propiedad.descripcion = descripcion }
+                        if  let pros = propiedadSeleccionada["pros"] as? String { self.propiedad.pros = pros }
+                        if  let wcs = propiedadSeleccionada["wcs"] as? String { self.propiedad.wcs = wcs }
+                        
+                        if  let files = propiedadSeleccionada["files"] as? Array<Any?> {
+                            for element in files{
+                                if let file = element as? NSDictionary {
+                                    if  let linkPublico = file["linkPublico"]! as? String{
+                                        self.propiedad.fotos.append(linkPublico)
+                                        print(self.propiedad.fotos)
+                                    }
+                                }
                             }
                         }
                     }
@@ -496,123 +495,148 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
     
     //funciones favoritos
     @IBAction func favoritos(_ sender: Any) {
-        let urlRequestFavoritos = "http://18.221.106.92/api/public/user/favorito"
         
-        var userId = ""
-        
-        if let usId = UserDefaults.standard.object(forKey: "userId") as? String{
-            userId = usId
-        }
-        
-        let parameters: [String:Any] = [
-            "user_id" : userId,
-            "prop_id" : idOfertaSeleccionada
-        ]
-        
-        print(userId)
-        print(idOfertaSeleccionada)
-        
-        guard let url = URL(string: urlRequestFavoritos) else { return }
-        
-        var request = URLRequest (url: url)
-        request.httpMethod = "POST"
-        
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        
-        let session  = URLSession.shared
-        
-        session.dataTask(with: request) { (data, response, error) in
+        if let userId = UserDefaults.standard.object(forKey: "userId") as? Int{
             
-            if let response = response {
-                print(response)
+            let urlRequestFavoritos = "http://18.221.106.92/api/public/user/favorito"
+            
+            guard let url = URL(string: urlRequestFavoritos) else { return }
+            
+            var request = URLRequest (url: url)
+            request.httpMethod = "POST"
+            
+            let parameters: [String:Any] = [
+                "user_id" : userId,
+                "prop_id" : idOfertaSeleccionada
+            ]
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+            } catch let error {
+                print(error.localizedDescription)
             }
             
-            if let data = data {
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            print(userId)
+            print(idOfertaSeleccionada)
+            
+            let session  = URLSession.shared
+            
+            session.dataTask(with: request) { (data, response, error) in
                 
-                do {
-                    let json = try JSONSerialization.jsonObject (with: data) as! [String:Any?]
-                    
-                    print(json)
-                    
-                } catch {
-                    print("El error es: ")
-                    print(error)
+                if let response = response {
+                    print(response)
                 }
                 
-                OperationQueue.main.addOperation({
+                if let data = data {
                     
-                })
-                
+                    do {
+                        let json = try JSONSerialization.jsonObject (with: data) as! [String:Any?]
+                        
+                        print(json)
+                        
+                    } catch {
+                        print("El error es: ")
+                        print(error)
+                    }
+                    
+                    OperationQueue.main.addOperation({
+                        self.revisarFavoritos()
+                    })
+                    
+                }
+            }.resume()
+        }
+        else{
+            navBarStyleCase = 2
+            performSegue(withIdentifier: "descriptionToLogin", sender: nil)
+        }
+        
+    }
+    
+    
+    
+    func revisarFavoritos(){
+        
+        if let userId = UserDefaults.standard.object(forKey: "userId") as? Int{
+            
+            var favoritos: [Int] = []
+            
+            let urlRequestFavoritos = "http://18.221.106.92/api/public/user/favorito"
+            
+            guard let url = URL(string: urlRequestFavoritos) else { return }
+            
+            var request = URLRequest (url: url)
+            request.httpMethod = "POST"
+            
+            let parameters: [String:Any] = [
+                "user_id" : userId,
+                "consulta" : 1
+            ]
+            
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+            } catch let error {
+                print(error.localizedDescription)
             }
-        }.resume()
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            print(userId)
+            print(idOfertaSeleccionada)
+            
+            let session  = URLSession.shared
+            
+            session.dataTask(with: request) { (data, response, error) in
+                
+                if let response = response {
+                    print(response)
+                }
+                
+                if let data = data {
+                    
+                    do {
+                        let json = try JSONSerialization.jsonObject (with: data) as! [String:Any?]
+                        
+                        print(json)
+                        
+                        if let jsonFavoritos = json["favoritos"] as? [Int]{
+                            favoritos = jsonFavoritos
+                        }
+                        
+                    } catch {
+                        print("El error es: ")
+                        print(error)
+                    }
+                    
+                    OperationQueue.main.addOperation({
+                        for favorito in favoritos{
+                            if String(favorito) == idOfertaSeleccionada{
+                                self.favoritosBtn.setBackgroundImage(UIImage(named: "favoritoSeleccionado.png") as UIImage?, for: .normal)
+                                break
+                            }
+                            else{
+                                self.favoritosBtn.setBackgroundImage(UIImage(named: "favorites.png") as UIImage?, for: .normal)
+                            }
+                        }
+                    })
+                    
+                }
+            }.resume()
+        }
         
     }
     
     @IBAction func compartir(_ sender: Any) {
         
-        let urlRequestFavoritos = "http://18.221.106.92/api/public/user/favorito"
-        
-        var userId = ""
-        
-        if let usId = UserDefaults.standard.object(forKey: "userId") as? String{
-            userId = usId
-        }
-        
-        let parameters: [String:Any] = [
-            "user_id" : userId,
-            "consulta" : 1
-        ]
-        
-        print(userId)
-        print(idOfertaSeleccionada)
-        
-        guard let url = URL(string: urlRequestFavoritos) else { return }
-        
-        var request = URLRequest (url: url)
-        request.httpMethod = "POST"
-        
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        
-        let session  = URLSession.shared
-        
-        session.dataTask(with: request) { (data, response, error) in
+        if let userId = UserDefaults.standard.object(forKey: "userId") as? Int{
             
-            if let response = response {
-                print(response)
-            }
-            
-            if let data = data {
-                
-                do {
-                    let json = try JSONSerialization.jsonObject (with: data) as! [String:Any?]
-                    
-                    print(json)
-                    
-                } catch {
-                    print("El error es: ")
-                    print(error)
-                }
-                
-                OperationQueue.main.addOperation({
-                    
-                })
-                
-            }
-        }.resume()
+        }
+        else{
+            navBarStyleCase = 2
+            performSegue(withIdentifier: "descriptionToLogin", sender: nil)
+        }
         
     }
     

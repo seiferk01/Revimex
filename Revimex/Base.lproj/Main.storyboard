@@ -129,13 +129,14 @@
                     <navigationItem key="navigationItem" id="Tkv-JG-i3U"/>
                     <connections>
                         <outlet property="contrasenaLabel" destination="FnW-Cy-3qz" id="1aO-4p-at8"/>
+                        <outlet property="invitadoBtn" destination="dyD-B0-3BT" id="Uue-7v-WgF"/>
                         <outlet property="usuarioLabel" destination="9nd-7L-koP" id="sYX-iP-3fw"/>
                         <segue destination="vsU-5q-cxT" kind="show" identifier="logedIn" id="HFz-xn-k93"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftM-gm-waQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1252" y="-439.43028485757122"/>
+            <point key="canvasLocation" x="-358" y="2250"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hA4-s1-IbA">
@@ -151,7 +152,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPp-a9-4xH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1252" y="465"/>
+            <point key="canvasLocation" x="1350" y="456"/>
         </scene>
         <!--Inicio-->
         <scene sceneID="Ob4-nb-kY7">
@@ -251,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjY-lf-4Ma" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="320.80000000000001" y="73.313343328335833"/>
+            <point key="canvasLocation" x="-450" y="456"/>
         </scene>
         <!--Stock-->
         <scene sceneID="pou-me-jhB">
@@ -356,7 +357,7 @@
                     <connections>
                         <outlet property="tableView" destination="Ok1-pP-3uW" id="6Xt-ha-e28"/>
                         <segue destination="bCG-VS-rd4" kind="show" id="Jc2-OJ-Tv8"/>
-                        <segue destination="4ck-kO-hfk" kind="show" identifier="goToLogin" id="QYd-vS-5Ig"/>
+                        <segue destination="4ck-kO-hfk" kind="show" identifier="stockToLogin" id="QYd-vS-5Ig"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQh-Uf-sya" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -393,10 +394,13 @@
                         <viewLayoutGuide key="safeArea" id="Nbc-n3-ttT"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favoritos" image="favoritos.png" id="QA0-JN-cHv"/>
+                    <connections>
+                        <segue destination="4ck-kO-hfk" kind="show" identifier="favoritesToLogin" id="v7J-A9-GYw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jld-QV-OcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1882" y="1305"/>
+            <point key="canvasLocation" x="1880.8" y="1304.7976011994003"/>
         </scene>
         <!--Carrito-->
         <scene sceneID="8ZR-cP-WuU">
@@ -450,7 +454,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jXH-Em-WLe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2145" y="465"/>
+            <point key="canvasLocation" x="2710" y="456"/>
         </scene>
         <!--Description View Controller-->
         <scene sceneID="7Ak-c5-lQl">
@@ -560,7 +564,6 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEh-2P-B8k">
                                 <rect key="frame" x="271" y="323" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="favorites.png"/>
                                 <connections>
                                     <action selector="favoritos:" destination="bCG-VS-rd4" eventType="touchUpInside" id="4pc-xb-Lbf"/>
                                 </connections>
@@ -610,11 +613,13 @@
                     <connections>
                         <outlet property="contenedorCarousel" destination="90W-1B-Wp3" id="JfT-7h-FPA"/>
                         <outlet property="descripcion" destination="nWK-CH-A94" id="IfY-WV-Z0H"/>
+                        <outlet property="favoritosBtn" destination="zEh-2P-B8k" id="khk-Xy-H6w"/>
+                        <segue destination="4ck-kO-hfk" kind="show" identifier="descriptionToLogin" id="XhZ-ko-oaF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5vs-3L-fHN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1412" y="2111.6941529235382"/>
+            <point key="canvasLocation" x="1881" y="2251"/>
         </scene>
     </scenes>
     <resources>
@@ -625,7 +630,6 @@
         <image name="compartir.ico" width="256" height="256"/>
         <image name="entrarConFcebook.png" width="300" height="100"/>
         <image name="escuelas.png" width="64" height="64"/>
-        <image name="favorites.png" width="512" height="512"/>
         <image name="favoritos.png" width="20" height="20"/>
         <image name="hospitales.png" width="64" height="64"/>
         <image name="parques.png" width="64" height="64"/>
@@ -634,8 +638,8 @@
         <image name="restaurantes.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aZI-9L-R01"/>
-        <segue reference="h0d-7C-YOx"/>
-        <segue reference="9me-4f-YmU"/>
+        <segue reference="ivx-oX-pij"/>
+        <segue reference="HFz-xn-k93"/>
+        <segue reference="v7J-A9-GYw"/>
     </inferredMetricsTieBreakers>
 </document>

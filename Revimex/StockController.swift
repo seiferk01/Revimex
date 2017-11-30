@@ -45,38 +45,36 @@ class StockController: UIViewController,UITableViewDataSource {
         super.viewDidLoad()
         
         //configuracion de la vista de la barra de navegacion
+        navigationController?.navigationBar.isHidden = false
         let navigationBarSize = navigationController?.navigationBar.bounds
         let navigationBarSizeWidth = navigationBarSize?.width
         let navigationBarSizeHeigth = navigationBarSize?.height
 
-        navigationController?.navigationBar.barTintColor = azul
+        navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.tintColor = UIColor.white
         
         let logo = UIImage(named: "revimex.png")
-        let imageView = UIImageView(image:logo)
-        imageView.frame = CGRect(x: navigationBarSizeWidth!*0.3,y: 0.0,width: navigationBarSizeWidth!*0.4,height: navigationBarSizeHeigth!)
+        let contenedorLogo = UIImageView(image:logo)
+        contenedorLogo.frame = CGRect(x: navigationBarSizeWidth!*0.3,y: 0.0,width: navigationBarSizeWidth!*0.4,height: navigationBarSizeHeigth!)
         
-        navigationController?.navigationBar.addSubview(imageView)
+        navigationController?.navigationBar.addSubview(contenedorLogo)
         
-        var logged = false
-        if let loggedIn = UserDefaults.standard.object(forKey: "loggedIn") as? Bool{
-            logged = loggedIn
-        }
-        
-        if logged {
-            let cuenta = UIImage(named: "cuenta.png")
-            let imageCuenta = UIImageView(image:cuenta)
-            imageCuenta.frame = CGRect(x: navigationBarSizeWidth!-navigationBarSizeHeigth!,y: 0.0,width: navigationBarSizeHeigth!,height: navigationBarSizeHeigth!)
-            imageCuenta.layer.masksToBounds = false
-            imageCuenta.layer.shadowRadius = 1.0
-            imageCuenta.layer.shadowColor = UIColor.black.cgColor
-            imageCuenta.layer.shadowOffset = CGSize(width: 0.7,height: 0.7)
-            imageCuenta.layer.shadowOpacity = 0.5
-            navigationController?.navigationBar.addSubview(imageCuenta)
+        //si ya se tiene id de usuario miestra el boton de cuenta, si no el de signin
+        if (UserDefaults.standard.object(forKey: "userId") as? Int) != nil{
+            let tapGestureRecognizerImgAcct = UITapGestureRecognizer(target: self, action: #selector(imagenCuentaTapped(tapGestureRecognizer:)))
+            
+            
+            let imagenCuenta = UIImage(named: "cuenta.png")
+            
+            imagenCuentaBtn.frame = CGRect(x: navigationBarSizeWidth!-navigationBarSizeHeigth!,y: 0.0,width: navigationBarSizeHeigth!,height: navigationBarSizeHeigth!)
+            imagenCuentaBtn.setBackgroundImage(imagenCuenta, for: .normal)
+            imagenCuentaBtn.addGestureRecognizer(tapGestureRecognizerImgAcct)
+            
+            navigationController?.navigationBar.addSubview(imagenCuentaBtn)
         }
         else{
             
-            let tapGestureRecognizerFilter = UITapGestureRecognizer(target: self, action: #selector(incioSesionTapped(tapGestureRecognizer:)))
+            let tapGestureRecognizerSignIn = UITapGestureRecognizer(target: self, action: #selector(incioSesionTapped(tapGestureRecognizer:)))
             
             incioSesionBtn.setTitle("SignIn", for: .normal)
             incioSesionBtn.frame = CGRect(x: navigationBarSizeWidth! - (navigationBarSizeWidth! * (0.2)),y: 0.0,width: navigationBarSizeWidth! * (0.2),height: navigationBarSizeHeigth!)
@@ -85,7 +83,7 @@ class StockController: UIViewController,UITableViewDataSource {
             incioSesionBtn.layer.shadowColor = UIColor.black.cgColor
             incioSesionBtn.layer.shadowOffset = CGSize(width: 0.7,height: 0.7)
             incioSesionBtn.layer.shadowOpacity = 0.5
-            incioSesionBtn.addGestureRecognizer(tapGestureRecognizerFilter)
+            incioSesionBtn.addGestureRecognizer(tapGestureRecognizerSignIn)
             navigationController?.navigationBar.addSubview(incioSesionBtn)
         }
         
@@ -135,55 +133,69 @@ class StockController: UIViewController,UITableViewDataSource {
                     }
                     
                     print("json de propiedades: ")
-                    print(json["propiedades"])
+                    print(json["propiedades"]!!)
                     
-                    let propiedades = json["propiedades"] as! NSDictionary
+                    if let propiedades = json["propiedades"] as? NSDictionary {
                     
-                    for propiedad in propiedades["data"] as! NSArray{
-                        let atribute = propiedad as! NSDictionary
-                        print("************Inicia propiedad************")
-                        print(atribute)
-                        
-                        var idPropiedad = ""
-                        if atribute["idp"] != nil{
-                            idPropiedad = String(atribute["idp"] as! Int)
-                        }
-                        
-                        var nombreEstado = ""
-                        if atribute["estado"] != nil {
-                            nombreEstado = atribute["estado"] as! String
-                        }
-                        
-                        var precioPropiedad = ""
-                        if atribute["precio"] != nil {
-                            precioPropiedad = atribute["precio"] as! String
-                        }
-                        
-                        var urlImagen: String = Utilities.sinFoto
-                        
-                        if !(atribute["fotoPrincipal"] is NSNull) {
-                            urlImagen = (atribute["fotoPrincipal"] as! String)
-                        }
-                        
-                        var data: NSData? = nil
-                        while data == nil {
-                            data = Utilities.traerImagen(urlImagen: urlImagen)
-                            urlImagen = "http://revimex.mx/images/250x160.png"
-                        }
-                        
-                        let oferta: Oferta = Oferta(id: idPropiedad,estado: nombreEstado,precio: precioPropiedad,urlImagen: data)
-                        
-                        self.arregloOfertas.append(oferta)
-                        
-                        print(self.arregloOfertas.count)
-                        if !(propiedades["next_page_url"] is NSNull){
-                            self.paginaSiguiente = propiedades["next_page_url"] as! String
-                            self.haySiguiente = true
+                        if let data = propiedades["data"]! as? NSArray{
+                            for propiedad in data {
+                                
+                                if let atribute = propiedad as? NSDictionary {
+                                
+                                    print("************Inicia propiedad************")
+                                    print(atribute)
+                                    
+                                    var idPropiedad = ""
+                                    var nombreEstado = ""
+                                    var precioPropiedad = ""
+                                    var urlImagen: String = Utilities.sinFoto
+                                    
+                                    
+                                    if let idProp = atribute["idp"] as? Int{
+                                        idPropiedad = String(idProp)
+                                    }
+                                    
+                                    
+                                    if let nomEst = atribute["estado"] as? String {
+                                        nombreEstado = nomEst
+                                    }
+                                    
+                                    
+                                    if let pecProp = atribute["precio"] as? String {
+                                        precioPropiedad = pecProp
+                                    }
+                                    
+                                    
+                                    if let propImage = atribute["fotoPrincipal"] as? String {
+                                        urlImagen = propImage
+                                    }
+                                    
+                                    var data: NSData? = nil
+                                    while data == nil {
+                                        data = Utilities.traerImagen(urlImagen: urlImagen)
+                                        urlImagen = "http://revimex.mx/images/250x160.png"
+                                    }
+                                    
+                                    let oferta: Oferta = Oferta(id: idPropiedad,estado: nombreEstado,precio: precioPropiedad,urlImagen: data)
+                                    
+                                    self.arregloOfertas.append(oferta)
+                                    
+                                    if let nextPage = propiedades["next_page_url"] as? String{
+                                        self.paginaSiguiente = nextPage
+                                        self.haySiguiente = true
+                                    }
+                                }
+                                else{
+                                    self.haySiguiente = false
+                                }
+                            }
                         }
                         else{
-                            self.haySiguiente = false
+                            print("ERROR: Hubo un problema al obtener propiedades[\"data\"] ")
                         }
-                        
+                    }
+                    else{
+                        print("ERROR: Hubo un problema al obtener json[\"propiedades\"] ")
                     }
                     
                 } catch {
@@ -203,11 +215,8 @@ class StockController: UIViewController,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        
         print(arregloOfertas.count)
-        
         return arregloOfertas.count
-        
     }
     
     
@@ -227,16 +236,24 @@ class StockController: UIViewController,UITableViewDataSource {
             if haySiguiente {
                 requestData(url: paginaSiguiente)
             }
-            print(arregloOfertas.count % (indexPath.row + 1))
-            print(arregloOfertas.count)
         }
         
         return row
     }
     
     @objc func incioSesionTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        performSegue(withIdentifier: "goToLogin", sender: nil)
-        isAlreadyIn = true
+        //oculta la barra de navegacion del login
+        navBarStyleCase = 1
+        performSegue(withIdentifier: "stockToLogin", sender: nil)
+    }
+    
+    @objc func imagenCuentaTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "stockToLogin", sender: nil)
+        UserDefaults.standard.removeObject(forKey: "usuario")
+        UserDefaults.standard.removeObject(forKey: "contraseña")
+        UserDefaults.standard.removeObject(forKey: "userId")
+        navBarStyleCase = 0
+        navigationController?.navigationBar.isHidden = true
     }
     
     

@@ -8,38 +8,6 @@
 
 import UIKit
 
-extension UIColor {
-    public convenience init?(hexString: String) {
-        let r, g, b, a: CGFloat
-        
-        if hexString.hasPrefix("#") {
-            let start = hexString.index(hexString.startIndex, offsetBy: 1)
-            let hexColor = String(hexString[start...])
-            
-            if hexColor.count == 8 {
-                let scanner = Scanner(string: hexColor)
-                var hexNumber: UInt64 = 0
-                
-                if scanner.scanHexInt64(&hexNumber) {
-                    r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
-                    g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
-                    b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
-                    a = CGFloat(hexNumber & 0x000000ff) / 255
-                    
-                    self.init(red: r, green: g, blue: b, alpha: a)
-                    return
-                }
-            }
-        }
-        
-        return nil
-    }
-}
-
-var azul = UIColor(hexString: "#48B1F3ff")
-var gris = UIColor(hexString: "#E5E5E5ff")
-
-var isAlreadyIn = false
 
 class ViewController: UIViewController {
     
@@ -53,7 +21,7 @@ class ViewController: UIViewController {
         textoRegistro.isEditable = false
         textoInvitado.isEditable = false
         
-        
+        //asigna el color, logo y tamaño a la barra de navegacion
         let screenSize = UIScreen.main.bounds
         
         let navBar: UINavigationBar = UINavigationBar()
@@ -70,25 +38,19 @@ class ViewController: UIViewController {
         navBar.isTranslucent = true
         navBar.addSubview(imageView)
         
-        // Do any additional setup after loading the view, typically from a nib.
     }
-    
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .lightContent
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
+    
+    //apagan la bandera que indica que es la primera vez que se entra en la aplicacion
     @IBAction func crearCuentaTapped(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "isFirstTime")
     }
     
     @IBAction func invitadoTapped(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "isFirstTime")
-        isAlreadyIn = true
     }
     
     

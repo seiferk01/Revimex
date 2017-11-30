@@ -13,32 +13,29 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import FBSDKShareKit
 
-var incioSesionBtn = UIButton()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var isFirstTime = true
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        var logged = false
-        if let loggedIn = UserDefaults.standard.object(forKey: "loggedIn") as? Bool{
-            logged = loggedIn
-        }
-        if logged {
+        //si ya se tiene un id de usuario hace una llamada al login para verificar que sigue activo
+        if (UserDefaults.standard.object(forKey: "userId") as? Int) != nil{
             logIn()
         }
         
         GMSServices.provideAPIKey("AIzaSyBuwBiNaQQcYb6yXDoxEDBASvrtjWgc03Q")
         GMSPlacesClient.provideAPIKey("AIzaSyBuwBiNaQQcYb6yXDoxEDBASvrtjWgc03Q")
         
-        
+        //variable para verificar si es la primera vez que se abre la aplicacion
+        var isFirstTime = true
         if let firstTime = UserDefaults.standard.object(forKey: "isFirstTime") as? Bool{
             isFirstTime = firstTime
         }
         
+        //si no es la primera vez que se abre la aplicacion, asigna el controller de stock como principal
         if isFirstTime == false {
             self.window = UIWindow(frame: UIScreen.main.bounds)
         
@@ -50,16 +47,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.makeKeyAndVisible()
         }
         
-        
-        
+        //para el loggin con facebook
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
 
     func applicationWillResignActive(_ application: UIApplication) {
+        //para el loggin con facebook
         FBSDKAppEvents.activateApp()
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        
     }
     
     
@@ -69,37 +65,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
     }
     
     
+    //llamada de login 
     func logIn(){
         
         var usuario = ""
         var contraseña = ""
-        var userId = ""
         
         if let us = UserDefaults.standard.object(forKey: "usuario") as? String{
             usuario = us
         }
         if let pass = UserDefaults.standard.object(forKey: "contraseña") as? String{
             contraseña = pass
-        }
-        if let id = UserDefaults.standard.object(forKey: "userId") as? String{
-            userId = id
         }
         
         
@@ -143,14 +135,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     switch (json["status"] as! Int) {
                         case 1:
-                            UserDefaults.standard.set(true, forKey: "loggedIn")
-                            UserDefaults.standard.set(usuario, forKey: "usuario")
-                            UserDefaults.standard.set(contraseña, forKey: "contraseña")
-                            if let userId = (json["user_id"] as? String){
+                            if let userId = (json["user_id"] as? Int){
+                                UserDefaults.standard.set(usuario, forKey: "usuario")
+                                UserDefaults.standard.set(contraseña, forKey: "contraseña")
                                 UserDefaults.standard.set(userId, forKey: "userId")
                             }
                         default:
-                            UserDefaults.standard.set(false, forKey: "loggedIn")
+                            UserDefaults.standard.removeObject(forKey: "userId")
                     }
                     
                 } catch {

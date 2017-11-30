@@ -517,7 +517,7 @@ class SearchController: UIViewController, MGLMapViewDelegate, UITextFieldDelegat
                 }
 
                 OperationQueue.main.addOperation({
-
+                    
                 })
 
             }

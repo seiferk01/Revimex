@@ -15,6 +15,7 @@ class LogInController: UIViewController {
     
     @IBOutlet weak var usuarioLabel: UITextField!
     @IBOutlet weak var contrasenaLabel: UITextField!
+    @IBOutlet var invitadoBtn: UIView!
     
     var usuario = ""
     var contraseña = ""
@@ -25,43 +26,46 @@ class LogInController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //pculta el boton de inicio de secion
         incioSesionBtn.isHidden = true
+        
+        //permite que el teclado se esconda al hacer click en otro lugar de la pantalla
         self.hideKeyboard()
         
-        if isAlreadyIn == false {
-            let screenSize = UIScreen.main.bounds
-        
-            let navBar: UINavigationBar = UINavigationBar()
-            navBar.frame = CGRect(x: 0.0,y: 0.0,width: screenSize.width,height: screenSize.height/3)  // Here you can set you Width and Height for your navBar
-            navBar.backgroundColor = azul
-        
-            let logo = UIImage(named: "revimex.png")
-            let imageView = UIImageView(image:logo)
-            imageView.frame = CGRect(x: screenSize.width/8,y: screenSize.height/7,width: screenSize.width*(6/8),height: screenSize.height/8)
-        
-            view.addSubview(navBar)
-            navBar.setBackgroundImage(UIImage(), for: .default)
-            navBar.shadowImage = UIImage()
-            navBar.isTranslucent = true
-            navBar.addSubview(imageView)
+        //asigna color tamaño y logo a la barra de navegacion dependiendo de si ya existe un usuario registrado
+        switch navBarStyleCase {
+            case 0:
+                let screenSize = UIScreen.main.bounds
+                
+                let navBar: UINavigationBar = UINavigationBar()
+                navBar.frame = CGRect(x: 0.0,y: 0.0,width: screenSize.width,height: screenSize.height/3)
+                navBar.backgroundColor = UIColor.black
+                
+                let logo = UIImage(named: "revimex.png")
+                let imageView = UIImageView(image:logo)
+                imageView.frame = CGRect(x: screenSize.width/8,y: screenSize.height/7,width: screenSize.width*(6/8),height: screenSize.height/8)
+                
+                view.addSubview(navBar)
+                navBar.setBackgroundImage(UIImage(), for: .default)
+                navBar.shadowImage = UIImage()
+                navBar.isTranslucent = true
+                navBar.addSubview(imageView)
+                invitadoBtn.isHidden = false
+                break
+            case 1:
+                print("vista uno")
+                break
+            case 2:
+                print("vista dos")
+                break
+            default:
+                invitadoBtn.isHidden = true
+            
         }
         
-//        // Add a custom login button to your app
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(loginButtonClicked(tapGestureRecognizer:)))
-//
-//        let myLoginButton = UIButton()
-//        myLoginButton.backgroundColor = UIColor.blue
-//        myLoginButton.frame = CGRect(x: 200,y: 0,width: 180,height: 40);
-//        myLoginButton.center = view.center;
-//        myLoginButton.setTitle("My Login Button", for: .normal)
-//
-//        // Handle clicks on the button
-//        myLoginButton.addGestureRecognizer(tapGestureRecognizer)
-//
-//        // Add the button to the view
-//        view.addSubview(myLoginButton)
         
-        //if the user is already logged in
+        //pide a facebook los datos de ususario en caso de que ya se haya logueado anteriormente
         if let accessToken = FBSDKAccessToken.current(){
             getFBUserData()
         }
@@ -70,25 +74,40 @@ class LogInController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        //muestra nuevamente el boton de inicio de sesion en la barra de navegacion al ocultar la pagina
         incioSesionBtn.isHidden = false
     }
-    
+        
     
     @IBAction func entrarComoInvitado(_ sender: Any) {
-        isAlreadyIn = true
+        
     }
     
     
+    //genera un alert
+    func alerta(titulo: String,mensaje: String){
+        let alert = UIAlertController(title: titulo, message: mensaje, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    //navega a la pagina principal
+    func continuar(){
+        self.performSegue(withIdentifier: "logedIn", sender: nil)
+    }
+    
+    
+    //********************************Funcion de inicio de sesion********************************
     @IBAction func iniciaSesion(_ sender: Any) {
-        isAlreadyIn = true
+        
         usuario = usuarioLabel.text!
         contraseña = contrasenaLabel.text!
         
-        if isValidEmail(testStr: usuario){
+        if Utilities.isValidEmail(testStr: usuario){
         
             let urlRequestFiltros = "http://18.221.106.92/api/public/user/login"
         
@@ -131,10 +150,10 @@ class LogInController: UIViewController {
                         case 0,2:
                             self.alerta(titulo: "Datos Incorrectos",mensaje: "Correo o contraseña no validos")
                         case 1:
-                            UserDefaults.standard.set(true, forKey: "loggedIn")
+                            //guarda los datos del usuario si la respuesta fue exitosa
                             UserDefaults.standard.set(self.usuario, forKey: "usuario")
                             UserDefaults.standard.set(self.contraseña, forKey: "contraseña")
-                            if let userId = (json["user_id"] as? String){
+                            if let userId = (json["user_id"] as? Int){
                                 UserDefaults.standard.set(userId, forKey: "userId")
                             }
                         default:
@@ -147,11 +166,8 @@ class LogInController: UIViewController {
                     }
                     
                     OperationQueue.main.addOperation({
-                        var logged = false
-                        if let loggedIn = UserDefaults.standard.object(forKey: "loggedIn") as? Bool{
-                            logged = loggedIn
-                        }
-                        if logged {
+                        if (UserDefaults.standard.object(forKey: "userId") as? Int) != nil{
+                            //si se obtuvo un id de usuario, continua a la pagina principal
                             self.continuar()
                         }
                     })
@@ -167,12 +183,13 @@ class LogInController: UIViewController {
     }
     
     
+    //********************************Funcion de creacion de cuenta********************************
     @IBAction func nuevaCuenta(_ sender: Any) {
-        isAlreadyIn = true
+        
         usuario = usuarioLabel.text!
         contraseña = contrasenaLabel.text!
         
-        if isValidEmail(testStr: usuario){
+        if Utilities.isValidEmail(testStr: usuario){
             
             if contraseña.count > 5 {
                 
@@ -214,10 +231,10 @@ class LogInController: UIViewController {
                             print(json["mensaje"] as! String)
                             
                             if (json["status"] as! Int) == 1 {
-                                UserDefaults.standard.set(true, forKey: "loggedIn")
+                                //guarda los datos del usuario si la respuesta fue exitosa
                                 UserDefaults.standard.set(self.usuario, forKey: "usuario")
                                 UserDefaults.standard.set(self.contraseña, forKey: "contraseña")
-                                if let userId = (json["user_id"] as? String){
+                                if let userId = (json["user_id"] as? Int){
                                     UserDefaults.standard.set(userId, forKey: "userId")
                                 }
                             }
@@ -228,11 +245,8 @@ class LogInController: UIViewController {
                         }
                         
                         OperationQueue.main.addOperation({
-                            var logged = false
-                            if let loggedIn = UserDefaults.standard.object(forKey: "loggedIn") as? Bool{
-                                logged = loggedIn
-                            }
-                            if logged {
+                            if (UserDefaults.standard.object(forKey: "userId") as? Int) != nil{
+                                //si se obtuvo un id de usuario, continua a la pagina principal
                                 self.continuar()
                             }
                         })
@@ -244,7 +258,6 @@ class LogInController: UIViewController {
             else{
                 alerta(titulo: "Datos Incorrectos",mensaje: "La contraseña debe tener al menos 6 caracteres")
             }
-            
         }
         else{
             alerta(titulo: "Datos Incorrectos",mensaje: "Ingresa un correo valido")
@@ -253,24 +266,7 @@ class LogInController: UIViewController {
     }
     
     
-    func isValidEmail(testStr: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: testStr)
-    }
-    
-    
-    func alerta(titulo: String,mensaje: String){
-        let alert = UIAlertController(title: titulo, message: mensaje, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func continuar(){
-        self.performSegue(withIdentifier: "logedIn", sender: nil)
-    }
-    
+    //*******************************Funciones para loggin con facebook******************************
     //when login button clicked
     @IBAction func loginButtonClicked(_ sender: Any) {
         let loginManager = LoginManager()
@@ -298,5 +294,6 @@ class LogInController: UIViewController {
             })
         }
     }
+    
 
 }

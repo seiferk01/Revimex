@@ -47,6 +47,7 @@ class ViewController: UIViewController {
     //apagan la bandera que indica que es la primera vez que se entra en la aplicacion
     @IBAction func crearCuentaTapped(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "isFirstTime")
+        print(sender);
     }
     
     @IBAction func invitadoTapped(_ sender: Any) {

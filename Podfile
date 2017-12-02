@@ -9,6 +9,7 @@ target 'Revimex' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
+  pod 'IQKeyboardManagerSwift'
 
   # Pods for Revimex
 

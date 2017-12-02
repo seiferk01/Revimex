@@ -120,16 +120,15 @@ class LogInController: UIViewController {
         
             var request = URLRequest (url: url)
             request.httpMethod = "POST"
-        
+            
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
             } catch let error {
                 print(error.localizedDescription)
             }
-        
+            
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        
+            
             let session  = URLSession.shared
         
             session.dataTask(with: request) { (data, response, error) in
@@ -139,7 +138,7 @@ class LogInController: UIViewController {
                 }
                 
                 if let data = data {
-                    
+                    print(data);
                     do {
                         let json = try JSONSerialization.jsonObject (with: data) as! [String:Any?]
                         

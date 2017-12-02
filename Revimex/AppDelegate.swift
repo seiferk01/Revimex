@@ -12,6 +12,7 @@ import GooglePlaces
 import FBSDKCoreKit
 import FBSDKLoginKit
 import FBSDKShareKit
+import IQKeyboardManagerSwift
 
 
 @UIApplicationMain
@@ -20,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        IQKeyboardManager.sharedManager().enable = true;
         
         //si ya se tiene un id de usuario hace una llamada al login para verificar que sigue activo
         if (UserDefaults.standard.object(forKey: "userId") as? Int) != nil{

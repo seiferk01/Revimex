@@ -248,12 +248,12 @@ class StockController: UIViewController,UITableViewDataSource {
     }
     
     @objc func imagenCuentaTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        performSegue(withIdentifier: "stockToLogin", sender: nil)
-        UserDefaults.standard.removeObject(forKey: "usuario")
+        performSegue(withIdentifier: "stockToInfo", sender: nil)
+        /*UserDefaults.standard.removeObject(forKey: "usuario")
         UserDefaults.standard.removeObject(forKey: "contraseña")
         UserDefaults.standard.removeObject(forKey: "userId")
         navBarStyleCase = 0
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true*/
     }
     
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		117900F21FD0D27D0037C64B /* InfoUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117900F11FD0D27D0037C64B /* InfoUserController.swift */; };
 		3261DDDE92CC7379B15839F6 /* Pods_Revimex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7157B05E32A444E4251D9884 /* Pods_Revimex.framework */; };
 		48B9B14F0C637A1897AF24BE /* Pods_RevimexUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4804135DFD212E74478102 /* Pods_RevimexUITests.framework */; };
 		520948571FCF407500A9239F /* favoritosSinLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 520948561FCF407300A9239F /* favoritosSinLogin.png */; };
@@ -117,6 +118,7 @@
 
 /* Begin PBXFileReference section */
 		08DAFE6012832DE401274C36 /* Pods-RevimexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevimexUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RevimexUITests/Pods-RevimexUITests.release.xcconfig"; sourceTree = "<group>"; };
+		117900F11FD0D27D0037C64B /* InfoUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoUserController.swift; path = /Users/maquina53/XCodeProjects/Revimex/Revimex/InfoUserController.swift; sourceTree = "<absolute>"; };
 		38C718A7EB59A146890BB452 /* Pods-Revimex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revimex.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revimex/Pods-Revimex.release.xcconfig"; sourceTree = "<group>"; };
 		4A7853774D5C0684B9B300A4 /* Pods-RevimexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevimexTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RevimexTests/Pods-RevimexTests.release.xcconfig"; sourceTree = "<group>"; };
 		520948561FCF407300A9239F /* favoritosSinLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favoritosSinLogin.png; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 			children = (
 				526DC5F41FB2396B007CD85F /* Images */,
 				52B7200A1FA785F500F447DA /* AppDelegate.swift */,
+				117900F11FD0D27D0037C64B /* InfoUserController.swift */,
 				52B7200C1FA785F500F447DA /* ViewController.swift */,
 				5221BE181FBE8A7200D0F89C /* LogInController.swift */,
 				52B7203F1FA78F4700F447DA /* StockController.swift */,
@@ -709,6 +712,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -719,6 +723,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -768,6 +773,7 @@
 				526DC6211FB4FC2B007CD85F /* SearchController.swift in Sources */,
 				5221BE191FBE8A7200D0F89C /* LogInController.swift in Sources */,
 				52A116DB1FA7B962002F6B59 /* DescriptionViewController.swift in Sources */,
+				117900F21FD0D27D0037C64B /* InfoUserController.swift in Sources */,
 				5221BDFD1FBA83FE00D0F89C /* Utilities.swift in Sources */,
 				5221BE1B1FBF77D000D0F89C /* FavoritesController.swift in Sources */,
 				52B7200B1FA785F500F447DA /* AppDelegate.swift in Sources */,
@@ -939,7 +945,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9K97DWZW76;
+				DEVELOPMENT_TEAM = PXENVG785Y;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -962,7 +968,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9K97DWZW76;
+				DEVELOPMENT_TEAM = PXENVG785Y;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -9,28 +9,59 @@
 import UIKit
 
 class FavoritesController: UIViewController {
-
     
+    var anchoPantalla = CGFloat(0)
+    var largoPantalla = CGFloat(0)
+    
+    var arrayFavoitos = [Favorito]()
+    
+    class Favorito{
+        var estado: String
+        var precio: String
+        var referencia: String
+        var fechaAgregado: String
+        var foto: UIImage
+        var urlPropiedad: String
+        
+        init(estado: String, precio: String, referencia: String, fechaAgregado: String, foto: UIImage, urlPropiedad: String){
+            self.estado = estado
+            self.precio = precio
+            self.referencia = referencia
+            self.fechaAgregado = fechaAgregado
+            self.foto = foto
+            self.urlPropiedad = urlPropiedad
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        anchoPantalla = view.bounds.width
+        largoPantalla = view.bounds.height
         let top = (navigationController?.navigationBar.bounds.height)!+20
+        
+        let tapGestureRecognizerMisFavoritos = UITapGestureRecognizer(target: self, action: #selector(misFavoritosTapped(tapGestureRecognizer:)))
         let misFavoritos = UIButton()
-        misFavoritos.frame = CGRect(x: 0, y: top, width: view.bounds.width/2, height: view.bounds.height * (0.07))
+        misFavoritos.frame = CGRect(x: 0, y: top, width: anchoPantalla/2, height: largoPantalla * (0.07))
         misFavoritos.backgroundColor = gris
         misFavoritos.setTitle("Mis Favoritos", for: .normal)
         misFavoritos.setTitleColor(UIColor.white, for: .normal)
         misFavoritos.layer.borderWidth = 1
         misFavoritos.layer.borderColor = UIColor.white.cgColor
+        misFavoritos.addGestureRecognizer(tapGestureRecognizerMisFavoritos)
         
+        let tapGestureRecognizerSugerencias = UITapGestureRecognizer(target: self, action: #selector(sugerenciasTapped(tapGestureRecognizer:)))
         let sugerencias = UIButton()
-        sugerencias.frame = CGRect(x: view.bounds.width/2, y: top, width: view.bounds.width/2, height: view.bounds.height * (0.07))
+        sugerencias.frame = CGRect(x: anchoPantalla/2, y: top, width: anchoPantalla/2, height: largoPantalla * (0.07))
         sugerencias.backgroundColor = gris
         sugerencias.setTitle("Sugerencias", for: .normal)
         sugerencias.setTitleColor(UIColor.white, for: .normal)
         sugerencias.layer.borderWidth = 1
         sugerencias.layer.borderColor = UIColor.white.cgColor
+        sugerencias.addGestureRecognizer(tapGestureRecognizerSugerencias)
+        
+        view.addSubview(misFavoritos)
+        view.addSubview(sugerencias)
         
         if let userId = UserDefaults.standard.object(forKey: "userId") as? Int{
             msotrarFavoritos(userId: userId)
@@ -65,34 +96,146 @@ class FavoritesController: UIViewController {
                     
                     for element in json as! NSArray {
                         print("************Empieza Favorito************")
+                        print(element)
+                        
                         if let favorito = element as? NSDictionary{
-                            print(favorito["idPropiedad"] as! Int)
+                            
+                            let objectFavorito = Favorito(estado: "", precio: "", referencia: "", fechaAgregado: "", foto: UIImage(named: "imagenNoEncontrada.png")!, urlPropiedad: "")
+                            
+                            if let edo = favorito["agregado"] as? String{
+                                objectFavorito.fechaAgregado = edo
+                            }
+                            
+                            if let favoritoPropiedad = favorito["propiedades"] as? NSArray{
+                                for propiedad in favoritoPropiedad{
+                                    if let atributoPropiedad = propiedad as? NSDictionary{
+                                        if let estado = atributoPropiedad["Estado__c"] as? String{
+                                            objectFavorito.estado = estado
+                                        }
+                                        if let precio = atributoPropiedad["ValorReferencia__c"] as? String{
+                                            objectFavorito.precio = precio
+                                        }
+                                        if let referencia = atributoPropiedad["Referencia"] as? String{
+                                            objectFavorito.referencia = referencia
+                                        }
+                                        if let urlPropiedad = atributoPropiedad["url_propiedad"] as? String{
+                                            objectFavorito.urlPropiedad = urlPropiedad
+                                        }
+                                        if let urlImagen = atributoPropiedad["url_imagen"] as? String{
+                                            objectFavorito.foto = Utilities.traerImagen(urlImagen: urlImagen)
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            self.arrayFavoitos.append(objectFavorito)
+                            
                         }
                     }
-                    
-                    //let results = json["results"] as! NSObject
-                
-                    
+                  
                 }catch {
                     print(error)
                 }
+                
+                OperationQueue.main.addOperation({
+                    self.mostrarMisFavoritos()
+                })
                 
             }
         }.resume()
     }
     
+    func mostrarMisFavoritos(){
+        
+        let largoDeFavorito = (largoPantalla * 0.6)
+        
+        let contenedorFavoritos = UIScrollView()
+        
+        contenedorFavoritos.frame = CGRect(x: 0, y: (largoPantalla * (0.07) + (navigationController?.navigationBar.bounds.height)!+20), width: anchoPantalla, height: largoPantalla * (0.92))
+        let largoContenido = largoDeFavorito * CGFloat(arrayFavoitos.count)
+        contenedorFavoritos.contentSize = CGSize(width: anchoPantalla, height: largoContenido)
+        
+        for (index, favorito) in arrayFavoitos.enumerated() {
+            
+            //tamaño del marco de elemento: 60% de la pantalla
+            let marcoFavorito = UIView()
+            
+            marcoFavorito.frame.origin.x = 0
+            marcoFavorito.frame.origin.y = largoDeFavorito * CGFloat(index)
+            marcoFavorito.frame.size = CGSize(width: anchoPantalla, height: largoDeFavorito)
+            marcoFavorito.addBorder(toSide: .Top, withColor: UIColor.gray.cgColor, andThickness: 1.0)
+            marcoFavorito.addBorder(toSide: .Bottom, withColor: UIColor.gray.cgColor, andThickness: 1.0)
+            
+            
+            let largoContenedor = marcoFavorito.bounds.height
+            
+            //tamaño de la foto: 60% del marco
+            let foto = UIImageView(image: favorito.foto)
+            foto.frame = CGRect(x: 0,y: (largoContenedor * 0.05),width: anchoPantalla, height: (largoContenedor * 0.55))
+            
+            //tamaño de la foto: 40% del marco
+            let info = UIView()
+            info.frame = CGRect(x: anchoPantalla * 0.02,y: (largoContenedor * 0.62),width: anchoPantalla * 0.96, height: (largoContenedor * 0.36))
+            info.backgroundColor = azulClaro!.withAlphaComponent(0.3)
+            info.isOpaque = false
+            info.layer.cornerRadius = 5
+            info.layer.borderWidth = 0.5
+            info.layer.borderColor = UIColor.gray.cgColor
+            
+            let largoInfo = info.bounds.height
+            //elementos de info
+            let  titulo = UILabel()
+            titulo.text = "Detalles"
+            titulo.font = titulo.font.withSize(15)
+            let estado = UILabel()
+            estado.text = favorito.estado
+            let precio = UILabel()
+            precio.text = favorito.precio
+            let referencia = UILabel()
+            referencia.text = favorito.referencia
+            let agregado = UILabel()
+            agregado.text = favorito.fechaAgregado
+            let urlReferenciaBtn = UIButton()
+            urlReferenciaBtn.setTitle("Ver en "+favorito.referencia, for: .normal)
+            
+            titulo.frame = CGRect(x: 5,y: -5,width: anchoPantalla, height: (largoInfo * 0.2))
+            
+            estado.frame = CGRect(x: 0,y: (largoContenedor * 0.5),width: anchoPantalla/2, height: (largoContenedor * 0.33))
+            precio.frame = CGRect(x: 0,y: (largoContenedor * 0.6),width: anchoPantalla/2, height: (largoContenedor * 0.33))
+            referencia.frame = CGRect(x: anchoPantalla/2,y: (largoContenedor * 0.5),width: anchoPantalla/2, height: (largoContenedor * 0.33))
+            agregado.frame = CGRect(x: anchoPantalla/2,y: (largoContenedor * 0.6),width: anchoPantalla/2, height: (largoContenedor * 0.33))
+            urlReferenciaBtn.frame = CGRect(x: 0,y: (largoContenedor * 0.8),width: anchoPantalla, height: (largoContenedor * 0.33))
+            
+            info.addSubview(titulo)
+//            info.addSubview(estado)
+//            info.addSubview(precio)
+//            info.addSubview(referencia)
+//            info.addSubview(agregado)
+//            info.addSubview(urlReferenciaBtn)
+            
+            
+            marcoFavorito.addSubview(foto)
+            marcoFavorito.addSubview(info)
+            contenedorFavoritos.addSubview(marcoFavorito)
+        }
+        
+        view.addSubview(contenedorFavoritos)
+        view.sendSubview(toBack: contenedorFavoritos)
+        
+    }
+    
     
     func solicitarRegistro(){
         let contenedorInfo = UIView()
-        contenedorInfo.frame = CGRect(x: view.bounds.width * (0.1), y: view.bounds.height * (0.2), width: view.bounds.width * (0.8), height: view.bounds.height * (0.8))
+        contenedorInfo.frame = CGRect(x: anchoPantalla * (0.1), y: (largoPantalla * (0.08)), width: anchoPantalla * (0.8), height: largoPantalla * (0.8))
         
         let image = UIImage(named: "favoritosSinLogin.png")
         let notLoggedMessage = UIImageView(image: image)
-        notLoggedMessage.frame = CGRect(x: 0, y: 0, width: contenedorInfo.bounds.width, height: contenedorInfo.bounds.height)
+        notLoggedMessage.frame = CGRect(x: 0, y: largoPantalla * (0.07), width: contenedorInfo.bounds.width, height: contenedorInfo.bounds.height)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(mostrarLogin(tapGestureRecognizer:)))
         let loginBtn = UIButton()
-        loginBtn.frame = CGRect(x: view.bounds.width * (0.15), y: view.bounds.height * (0.8), width: view.bounds.width * (0.7), height: view.bounds.height * (0.06))
+        loginBtn.frame = CGRect(x: anchoPantalla * (0.15), y: largoPantalla * (0.8), width: anchoPantalla * (0.7), height: largoPantalla * (0.06))
         loginBtn.backgroundColor = gris
         loginBtn.setTitle("Registrarse", for: .normal)
         loginBtn.addGestureRecognizer(tapGestureRecognizer)
@@ -100,6 +243,7 @@ class FavoritesController: UIViewController {
         contenedorInfo.addSubview(notLoggedMessage)
         view.addSubview(contenedorInfo)
         view.addSubview(loginBtn)
+        view.sendSubview(toBack: contenedorInfo)
     }
     
     
@@ -107,6 +251,16 @@ class FavoritesController: UIViewController {
         print("fue a login")
         navBarStyleCase = 2
         performSegue(withIdentifier: "favoritesToLogin", sender: nil)
+    }
+    
+    
+    @objc func misFavoritosTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        print("favoritos")
+    }
+    
+    
+    @objc func sugerenciasTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        print("sugerencias")
     }
 
 }

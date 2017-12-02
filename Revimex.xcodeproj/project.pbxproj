@@ -10,6 +10,7 @@
 		3261DDDE92CC7379B15839F6 /* Pods_Revimex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7157B05E32A444E4251D9884 /* Pods_Revimex.framework */; };
 		48B9B14F0C637A1897AF24BE /* Pods_RevimexUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4804135DFD212E74478102 /* Pods_RevimexUITests.framework */; };
 		520948571FCF407500A9239F /* favoritosSinLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 520948561FCF407300A9239F /* favoritosSinLogin.png */; };
+		520948931FD07E3200A9239F /* imagenNoEncontrada.png in Resources */ = {isa = PBXBuildFile; fileRef = 520948921FD07E2A00A9239F /* imagenNoEncontrada.png */; };
 		521E56131FC5F9F900D38947 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521E561A1FC5F9F900D38947 /* Bolts.framework */; };
 		521E56141FC5F9F900D38947 /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521E561B1FC5F9F900D38947 /* FacebookCore.framework */; };
 		521E56151FC5F9F900D38947 /* FacebookLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521E561C1FC5F9F900D38947 /* FacebookLogin.framework */; };
@@ -120,6 +121,7 @@
 		38C718A7EB59A146890BB452 /* Pods-Revimex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revimex.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revimex/Pods-Revimex.release.xcconfig"; sourceTree = "<group>"; };
 		4A7853774D5C0684B9B300A4 /* Pods-RevimexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevimexTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RevimexTests/Pods-RevimexTests.release.xcconfig"; sourceTree = "<group>"; };
 		520948561FCF407300A9239F /* favoritosSinLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favoritosSinLogin.png; sourceTree = "<group>"; };
+		520948921FD07E2A00A9239F /* imagenNoEncontrada.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagenNoEncontrada.png; sourceTree = "<group>"; };
 		521E561A1FC5F9F900D38947 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		521E561B1FC5F9F900D38947 /* FacebookCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		521E561C1FC5F9F900D38947 /* FacebookLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,6 +280,7 @@
 		526DC5F41FB2396B007CD85F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				520948921FD07E2A00A9239F /* imagenNoEncontrada.png */,
 				5231C1071FCD0FA200ED4C54 /* favoritoSeleccionado.png */,
 				520948561FCF407300A9239F /* favoritosSinLogin.png */,
 				5221BE141FBE103800D0F89C /* buscarFiltros.png */,
@@ -545,6 +548,7 @@
 				5221BE041FBB784700D0F89C /* hospital.png in Resources */,
 				5221BE081FBB784700D0F89C /* school.png in Resources */,
 				526DC5F11FB21D9F007CD85F /* restaurantes.png in Resources */,
+				520948931FD07E3200A9239F /* imagenNoEncontrada.png in Resources */,
 				52B720101FA785F500F447DA /* Main.storyboard in Resources */,
 				5221BE091FBB784700D0F89C /* convenience_store.png in Resources */,
 				5221BE071FBB784700D0F89C /* restaurant.png in Resources */,

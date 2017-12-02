@@ -29,14 +29,14 @@ class StockController: UIViewController,UITableViewDataSource {
     class Oferta {
         var estado: String
         var precio: String
-        var urlImagen: NSData?
+        var foto: UIImage
         var id: String
         
-        init(id: String,estado: String, precio: String, urlImagen: NSData?){
+        init(id: String,estado: String, precio: String, foto: UIImage ){
             self.id = id
             self.estado = estado
             self.precio = precio
-            self.urlImagen = urlImagen
+            self.foto = foto
         }
     }
     
@@ -145,38 +145,23 @@ class StockController: UIViewController,UITableViewDataSource {
                                     print("************Inicia propiedad************")
                                     print(atribute)
                                     
-                                    var idPropiedad = ""
-                                    var nombreEstado = ""
-                                    var precioPropiedad = ""
-                                    var urlImagen: String = Utilities.sinFoto
-                                    
+                                    let oferta: Oferta = Oferta(id: "",estado: "",precio: "",foto: UIImage(named: "imagenNoEncontrada.png")!)
                                     
                                     if let idProp = atribute["idp"] as? Int{
-                                        idPropiedad = String(idProp)
+                                        oferta.id = String(idProp)
                                     }
-                                    
                                     
                                     if let nomEst = atribute["estado"] as? String {
-                                        nombreEstado = nomEst
+                                        oferta.estado = nomEst
                                     }
-                                    
                                     
                                     if let pecProp = atribute["precio"] as? String {
-                                        precioPropiedad = pecProp
+                                        oferta.precio = pecProp
                                     }
-                                    
                                     
                                     if let propImage = atribute["fotoPrincipal"] as? String {
-                                        urlImagen = propImage
+                                        oferta.foto = Utilities.traerImagen(urlImagen: propImage)
                                     }
-                                    
-                                    var data: NSData? = nil
-                                    while data == nil {
-                                        data = Utilities.traerImagen(urlImagen: urlImagen)
-                                        urlImagen = "http://revimex.mx/images/250x160.png"
-                                    }
-                                    
-                                    let oferta: Oferta = Oferta(id: idPropiedad,estado: nombreEstado,precio: precioPropiedad,urlImagen: data)
                                     
                                     self.arregloOfertas.append(oferta)
                                     
@@ -229,7 +214,7 @@ class StockController: UIViewController,UITableViewDataSource {
         row.precio.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
         row.estado.text = arregloOfertas[indexPath.row].estado
         row.precio.text = "$" + arregloOfertas[indexPath.row].precio
-        row.vistaFoto.image = UIImage(data: arregloOfertas[indexPath.row].urlImagen! as Data)
+        row.vistaFoto.image = arregloOfertas[indexPath.row].foto
         print(indexPath.row)
         
         if arregloOfertas.count == (indexPath.row + 1){

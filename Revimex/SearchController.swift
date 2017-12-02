@@ -367,21 +367,21 @@ class SearchController: UIViewController, MGLMapViewDelegate, UITextFieldDelegat
                     let json = try JSONSerialization.jsonObject (with: data) as! [String:Any?]
                     
                     print(json)
-                    let selectedAdress = json["results"] as! NSArray
-                    let adress = selectedAdress[0] as! NSDictionary
-                    let adressGeometry = adress["geometry"] as! NSDictionary
-                    let location = adressGeometry["location"] as! NSDictionary
-                    let bounds = adressGeometry ["viewport"] as! NSDictionary
-                    let northeast = bounds["northeast"] as! NSDictionary
-                    let southwest = bounds["southwest"] as! NSDictionary
+                    if let selectedAdress = json["results"] as? NSArray,
+                        let adress = selectedAdress[0] as? NSDictionary,
+                        let adressGeometry = adress["geometry"] as? NSDictionary,
+                        let location = adressGeometry["location"] as? NSDictionary,
+                        let bounds = adressGeometry ["viewport"] as? NSDictionary,
+                        let northeast = bounds["northeast"] as? NSDictionary,
+                        let southwest = bounds["southwest"] as? NSDictionary {
                     
-                    self.northeastLat = northeast["lat"] as! Double
-                    self.northeastLng = northeast["lng"] as! Double
-                    self.southwestLat = southwest["lat"] as! Double
-                    self.southwestLng = southwest["lng"] as! Double
-                    self.locationLat = location["lat"] as! Double
-                    self.locationLng = location["lng"] as! Double
-                    
+                        self.northeastLat = northeast["lat"] as! Double
+                        self.northeastLng = northeast["lng"] as! Double
+                        self.southwestLat = southwest["lat"] as! Double
+                        self.southwestLng = southwest["lng"] as! Double
+                        self.locationLat = location["lat"] as! Double
+                        self.locationLng = location["lng"] as! Double
+                    }
                     
                 } catch {
                     print("El error es: ")

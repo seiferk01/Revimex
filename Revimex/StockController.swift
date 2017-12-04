@@ -49,7 +49,7 @@ class StockController: UIViewController,UITableViewDataSource {
         let navigationBarSize = navigationController?.navigationBar.bounds
         let navigationBarSizeWidth = navigationBarSize?.width
         let navigationBarSizeHeigth = navigationBarSize?.height
-
+        
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.tintColor = UIColor.white
         
@@ -66,6 +66,7 @@ class StockController: UIViewController,UITableViewDataSource {
             
             let imagenCuenta = UIImage(named: "cuenta.png")
             
+            imagenCuentaBtn.tag = 1;
             imagenCuentaBtn.frame = CGRect(x: navigationBarSizeWidth!-navigationBarSizeHeigth!,y: 0.0,width: navigationBarSizeHeigth!,height: navigationBarSizeHeigth!)
             imagenCuentaBtn.setBackgroundImage(imagenCuenta, for: .normal)
             imagenCuentaBtn.addGestureRecognizer(tapGestureRecognizerImgAcct)
@@ -76,6 +77,7 @@ class StockController: UIViewController,UITableViewDataSource {
             
             let tapGestureRecognizerSignIn = UITapGestureRecognizer(target: self, action: #selector(incioSesionTapped(tapGestureRecognizer:)))
             
+            incioSesionBtn.tag = 2;
             incioSesionBtn.setTitle("SignIn", for: .normal)
             incioSesionBtn.frame = CGRect(x: navigationBarSizeWidth! - (navigationBarSizeWidth! * (0.2)),y: 0.0,width: navigationBarSizeWidth! * (0.2),height: navigationBarSizeHeigth!)
             incioSesionBtn.layer.masksToBounds = false
@@ -136,12 +138,12 @@ class StockController: UIViewController,UITableViewDataSource {
                     print(json["propiedades"]!!)
                     
                     if let propiedades = json["propiedades"] as? NSDictionary {
-                    
+                        
                         if let data = propiedades["data"]! as? NSArray{
                             for propiedad in data {
                                 
                                 if let atribute = propiedad as? NSDictionary {
-                                
+                                    
                                     print("************Inicia propiedad************")
                                     print(atribute)
                                     
@@ -210,7 +212,7 @@ class StockController: UIViewController,UITableViewDataSource {
                 })
                 
             }
-        }.resume()
+            }.resume()
     }
     
     
@@ -241,6 +243,7 @@ class StockController: UIViewController,UITableViewDataSource {
         return row
     }
     
+    
     @objc func incioSesionTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         //oculta la barra de navegacion del login
         navBarStyleCase = 1
@@ -250,10 +253,10 @@ class StockController: UIViewController,UITableViewDataSource {
     @objc func imagenCuentaTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         performSegue(withIdentifier: "stockToInfo", sender: nil)
         /*UserDefaults.standard.removeObject(forKey: "usuario")
-        UserDefaults.standard.removeObject(forKey: "contraseña")
-        UserDefaults.standard.removeObject(forKey: "userId")
-        navBarStyleCase = 0
-        navigationController?.navigationBar.isHidden = true*/
+         UserDefaults.standard.removeObject(forKey: "contraseña")
+         UserDefaults.standard.removeObject(forKey: "userId")
+         navBarStyleCase = 0
+         navigationController?.navigationBar.isHidden = true*/
     }
     
     

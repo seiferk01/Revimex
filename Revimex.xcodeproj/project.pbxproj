@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1125AA551FD5DD9700B26316 /* menu-vertical-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 1125AA541FD5DD9700B26316 /* menu-vertical-100.png */; };
+		1125AA5B1FD5E61F00B26316 /* menu-horizontal-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 1125AA5A1FD5E61F00B26316 /* menu-horizontal-100.png */; };
 		117900F21FD0D27D0037C64B /* InfoUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117900F11FD0D27D0037C64B /* InfoUserController.swift */; };
 		3261DDDE92CC7379B15839F6 /* Pods_Revimex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7157B05E32A444E4251D9884 /* Pods_Revimex.framework */; };
 		48B9B14F0C637A1897AF24BE /* Pods_RevimexUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4804135DFD212E74478102 /* Pods_RevimexUITests.framework */; };
@@ -118,6 +120,8 @@
 
 /* Begin PBXFileReference section */
 		08DAFE6012832DE401274C36 /* Pods-RevimexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevimexUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RevimexUITests/Pods-RevimexUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1125AA541FD5DD9700B26316 /* menu-vertical-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-vertical-100.png"; sourceTree = "<group>"; };
+		1125AA5A1FD5E61F00B26316 /* menu-horizontal-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-horizontal-100.png"; sourceTree = "<group>"; };
 		117900F11FD0D27D0037C64B /* InfoUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoUserController.swift; path = /Users/maquina53/XCodeProjects/Revimex/Revimex/InfoUserController.swift; sourceTree = "<absolute>"; };
 		38C718A7EB59A146890BB452 /* Pods-Revimex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revimex.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revimex/Pods-Revimex.release.xcconfig"; sourceTree = "<group>"; };
 		4A7853774D5C0684B9B300A4 /* Pods-RevimexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevimexTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RevimexTests/Pods-RevimexTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -280,6 +284,8 @@
 		526DC5F41FB2396B007CD85F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1125AA5A1FD5E61F00B26316 /* menu-horizontal-100.png */,
+				1125AA541FD5DD9700B26316 /* menu-vertical-100.png */,
 				5231C1071FCD0FA200ED4C54 /* favoritoSeleccionado.png */,
 				520948561FCF407300A9239F /* favoritosSinLogin.png */,
 				5221BE141FBE103800D0F89C /* buscarFiltros.png */,
@@ -548,9 +554,11 @@
 				5221BE041FBB784700D0F89C /* hospital.png in Resources */,
 				5221BE081FBB784700D0F89C /* school.png in Resources */,
 				526DC5F11FB21D9F007CD85F /* restaurantes.png in Resources */,
+				1125AA5B1FD5E61F00B26316 /* menu-horizontal-100.png in Resources */,
 				52B720101FA785F500F447DA /* Main.storyboard in Resources */,
 				5221BE091FBB784700D0F89C /* convenience_store.png in Resources */,
 				5221BE071FBB784700D0F89C /* restaurant.png in Resources */,
+				1125AA551FD5DD9700B26316 /* menu-vertical-100.png in Resources */,
 				5221BE061FBB784700D0F89C /* shopping_mall.png in Resources */,
 				526DC6171FB4BE5B007CD85F /* favoritos.png in Resources */,
 				5221BE051FBB784700D0F89C /* park.png in Resources */,

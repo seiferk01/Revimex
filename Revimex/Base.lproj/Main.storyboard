@@ -632,10 +632,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBZ-mB-H9r">
-                                <rect key="frame" x="10" y="10" width="355" height="274"/>
+                                <rect key="frame" x="10" y="54" width="355" height="230"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y3n-u4-JLM">
-                                        <rect key="frame" x="20" y="30" width="315" height="224"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y3n-u4-JLM">
+                                        <rect key="frame" x="20" y="30" width="315" height="180"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -809,6 +809,7 @@
                         <outlet property="txFlRFCUser" destination="wz1-5p-jKu" id="fXb-80-zKP"/>
                         <outlet property="txFlSApellidoUser" destination="Yb7-5f-0YM" id="LZC-Sr-rAX"/>
                         <outlet property="txFlTelUser" destination="dNT-CA-r6Z" id="3EJ-wp-Ubl"/>
+                        <segue destination="4ck-kO-hfk" kind="showDetail" identifier="infoToLogin" id="fkS-xS-2xe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N8p-3r-qkt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -834,6 +835,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="aZI-9L-R01"/>
         <segue reference="h0d-7C-YOx"/>
-        <segue reference="QYd-vS-5Ig"/>
+        <segue reference="fkS-xS-2xe"/>
     </inferredMetricsTieBreakers>
 </document>

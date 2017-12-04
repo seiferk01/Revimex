@@ -27,23 +27,32 @@ class InfoUserController: UIViewController {
     @IBOutlet weak var btGuardar: UIButton!
     
     private var user_id : String!;
+    private var cuentaBtn: UIButton!;
+    private var tapGesture: UITapGestureRecognizer!;
+    private var menuContainer: UIView!;
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.hideKeyboard();
+        
         self.navigationController?.isNavigationBarHidden = false;
+        
+        //Se obtiene de las subviews el Boton de información de usuario
+        let a = self.navigationController?.navigationBar.subviews;
+        cuentaBtn = a![5] as! UIButton;
+        
+        cuentaBtn.setBackgroundImage(UIImage(named:"menu-horizontal-100.png"), for: .normal);
+        tapGesture = UITapGestureRecognizer(target: self,action: #selector(InfoUserController.menuTapped(tapGestureRecognizer:)));
+        cuentaBtn.addGestureRecognizer(tapGesture);
+        
+        iniMenu();
         
         user_id = UserDefaults.standard.string(forKey: "userId")!;
         
-        print(scVwDatosUser.contentSize.height);
-        print(txFlRFCUser.frame.height);
-        
         scVwDatosUser.isScrollEnabled = true;
         scVwDatosUser.contentSize =    CGSize(width: scVwDatosUser.contentSize.width,height: (txFlDirUser.frame.height+10)*13);
-        
-        print(scVwDatosUser.contentSize.height);
         
         txFlEmailUser.placeholder = "Email" ;
         txFlEmailUser.keyboardType = UIKeyboardType.emailAddress;
@@ -143,6 +152,39 @@ class InfoUserController: UIViewController {
         
     }
     
+    //Crear menu
+    private func iniMenu(){
+        
+        let screenSize = UIScreen.main.bounds;
+        let navigation = navigationController?.navigationBar.frame;
+        let posY = navigation?.maxY;
+        let posX = navigation?.maxX;
+        
+        menuContainer = UIView(frame: CGRect(/*x: 200, y: 500, width: 100, height: 100*/));
+        menuContainer.frame = CGRect(x: posX! - (screenSize.width*(0.3)) - 5, y: posY!, width: screenSize.width*(0.3), height: 100);
+        menuContainer.backgroundColor = UIColor.white;
+        menuContainer.layer.masksToBounds = false;
+        menuContainer.layer.shadowRadius = 2.0;
+        menuContainer.layer.shadowColor = UIColor.black.cgColor;
+        menuContainer.layer.shadowOffset = CGSize(width: 0.7, height: 0.7);
+        menuContainer.layer.shadowOpacity = 0.5;
+        menuContainer.isHidden = true;
+        
+        let subScreen = menuContainer.bounds;
+        let logOutBtn = UIButton(type: .system);
+        logOutBtn.frame = CGRect(x: subScreen.minX + 4, y:0, width: subScreen.width * (0.90), height: screenSize.height * (0.04));
+        logOutBtn.setTitle("Cerrar Sesión", for: .normal);
+        logOutBtn.titleLabel?.font = UIFont(name: "HelveticaNeue-Thin", size: 16);
+        logOutBtn.setTitleColor(UIColor.black, for: .normal);
+        logOutBtn.backgroundColor = UIColor.white;
+        logOutBtn.addTarget(self, action: #selector(logOut), for: .touchUpInside);
+        
+        menuContainer.frame.size = CGSize(width: menuContainer.frame.width, height: logOutBtn.frame.height);
+        menuContainer.addSubview(logOutBtn);
+        
+        view.addSubview(menuContainer);
+    }
+    
     //Obtiene la informacion del usuraio a partir de su numero de ID
     private func obtInfoUser(){
         print(UserDefaults.standard.integer(forKey: "userId"));
@@ -161,7 +203,10 @@ class InfoUserController: UIViewController {
                 if let data = data{
                     do{
                         let json = try JSONSerialization.jsonObject(with: data) as! [String:Any?];
-                        self.colocarInfo(json);
+                        
+                        let dataImg: NSData? = Utilities.traerImagen(urlImagen: Utilities.sinFoto);
+                        
+                        self.colocarInfo(json,data: dataImg);
                     }catch{
                         print(error);
                     }
@@ -174,7 +219,7 @@ class InfoUserController: UIViewController {
     
     
     //Coloca la información del usuario en los TextFields
-    private func colocarInfo(_ json:[String:Any?]){
+    private func colocarInfo(_ json:[String:Any?],data: NSData!){
         OperationQueue.main.addOperation {
             self.txFlEmailUser.text = json["email"] as? String;
             self.txFlNameUser.text = json["name"] as? String;
@@ -187,7 +232,33 @@ class InfoUserController: UIViewController {
             self.txFlFechaNacUser.text = json["fecha_nacimiento"] as? String;
             self.txFlDirUser.text = json["direccion"] as? String;
             self.txFlRFCUser.text = json["rfc"] as? String;
+            self.imgUser.image = UIImage(data: data as Data);
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        cuentaBtn.setBackgroundImage(UIImage(named: "cuenta.png"), for: .normal);
+        cuentaBtn.removeGestureRecognizer(tapGesture);
+        super.viewWillDisappear(animated);
+    }
+    
+    
+    @objc func menuTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        menuContainer.isHidden = !menuContainer.isHidden
+    }
+    
+    @objc func logOut(){
+        UserDefaults.standard.removeObject(forKey: "usuario");
+        UserDefaults.standard.removeObject(forKey: "contraseña");
+        UserDefaults.standard.removeObject(forKey: "userId");
+        navBarStyleCase = 0;
+        navigationController?.navigationBar.isHidden = true;
+        performSegue(withIdentifier: "infoToLogin", sender: nil)
+    }
+    
     
 }

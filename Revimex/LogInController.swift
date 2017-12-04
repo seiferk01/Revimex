@@ -145,18 +145,20 @@ class LogInController: UIViewController {
                         print(json["status"] as! Int)
                         print(json["mensaje"] as! String)
                         
-                        switch (json["status"] as! Int) {
-                        case 0,2:
-                            self.alerta(titulo: "Datos Incorrectos",mensaje: "Correo o contraseña no validos")
-                        case 1:
-                            //guarda los datos del usuario si la respuesta fue exitosa
-                            UserDefaults.standard.set(self.usuario, forKey: "usuario")
-                            UserDefaults.standard.set(self.contraseña, forKey: "contraseña")
-                            if let userId = (json["user_id"] as? Int){
-                                UserDefaults.standard.set(userId, forKey: "userId")
+                        if let estatus = json["status"] as? Int{
+                            switch estatus {
+                            case 0,2:
+                                self.alerta(titulo: "Datos Incorrectos",mensaje: "Correo o contraseña no validos")
+                            case 1:
+                                //guarda los datos del usuario si la respuesta fue exitosa
+                                UserDefaults.standard.set(self.usuario, forKey: "usuario")
+                                UserDefaults.standard.set(self.contraseña, forKey: "contraseña")
+                                if let userId = (json["user_id"] as? Int){
+                                    UserDefaults.standard.set(userId, forKey: "userId")
+                                }
+                            default:
+                                print("Status recibido del servidor no especificado")
                             }
-                        default:
-                            print("Status recibido del servidor no especificado")
                         }
                         
                     } catch {

@@ -130,11 +130,9 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
         contenedorCarousel.showsHorizontalScrollIndicator = false
        
         for (index, url) in propiedad.fotos.enumerated() {
-            let data = Utilities.traerImagen(urlImagen: url)
-
-            let image = UIImage(data: data as Data)
             
-            let marco = UIImageView(image: image)
+            let marco = UIImageView(image: Utilities.traerImagen(urlImagen: url))
+            
             marco.frame.origin.x = ancho * CGFloat(index)
             marco.frame.origin.y = 0
             marco.frame.size = CGSize(width: ancho, height: largo)
@@ -170,11 +168,9 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
 
         
         for (index, url) in propiedad.fotos.enumerated() {
-            let data = Utilities.traerImagen(urlImagen: url)
-
-            let image = UIImage(data: data as Data)
-
-            let marco = UIImageView(image: image)
+            
+            let marco = UIImageView(image: Utilities.traerImagen(urlImagen: url))
+            
             marco.frame.origin.x = ancho * CGFloat(index)
             marco.frame.origin.y = 0
             marco.frame.size = CGSize(width: ancho, height: view.bounds.width * (0.8))

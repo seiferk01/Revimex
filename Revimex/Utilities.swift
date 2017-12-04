@@ -26,6 +26,32 @@ extension UIViewController
     }
 }
 
+
+extension UIView {
+    
+    // Example use: myView.addBorder(toSide: .Left, withColor: UIColor.redColor().CGColor, andThickness: 1.0)
+    
+    enum ViewSide {
+        case Left, Right, Top, Bottom
+    }
+    
+    func addBorder(toSide side: ViewSide, withColor color: CGColor, andThickness thickness: CGFloat) {
+        
+        let border = CALayer()
+        border.backgroundColor = color
+        
+        switch side {
+        case .Left: border.frame = CGRect(x: frame.minX, y: frame.minY, width: thickness, height: frame.height); break
+        case .Right: border.frame = CGRect(x: frame.maxX, y: frame.minY, width: thickness, height: frame.height); break
+        case .Top: border.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: thickness); break
+        case .Bottom: border.frame = CGRect(x: frame.minX, y: frame.maxY, width: frame.width, height: thickness); break
+        }
+        
+        layer.addSublayer(border)
+    }
+}
+
+
 extension UIColor {
     public convenience init?(hexString: String) {
         let r, g, b, a: CGFloat
@@ -54,7 +80,9 @@ extension UIColor {
     }
 }
 
+
 var azul = UIColor(hexString: "#48B1F3ff")
+var azulClaro = UIColor(hexString: "#F0F5F6ff")
 var gris = UIColor(hexString: "#3B3B3Bff")
 
 //variable global, obtiene un valor en TableViewCell.swift dependiendo de la propiedad que se selecciono
@@ -69,24 +97,19 @@ var withNavBarStyle = true
 var navBarStyleCase = 0
 
 class Utilities: NSObject {
-    
-    static let sinFoto = "http://revimex.mx/images/250x160.png"
 
-    //recibe una url en tipo string, la procesa y la regresa como nsdata
-    static func traerImagen(urlImagen: String) -> NSData{
+    //recibe una url en tipo string, la procesa y la regresa como imagen
+    static func traerImagen(urlImagen: String) -> UIImage{
         
-        var imgURL = NSURL(string: urlImagen)
-        if imgURL == nil{
-            imgURL = NSURL(string: sinFoto)
+        var imagen = UIImage(named: "imagenNoEncontrada.png")
+        
+        let imgURL = NSURL(string: urlImagen)
+        
+        if let data = NSData(contentsOf: (imgURL as URL?)!){
+            imagen = UIImage(data: data as Data)
         }
         
-        var data = NSData(contentsOf: (imgURL as URL?)!)
-        if data == nil {
-            imgURL = NSURL(string: sinFoto)
-            data = NSData(contentsOf: (imgURL as URL?)!)
-        }
-        
-        return data!
+        return imagen!
     }
     
     //recibe una cadena de texto y regresa true si es un correo valido

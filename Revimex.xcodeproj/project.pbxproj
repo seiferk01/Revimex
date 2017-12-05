@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		1125AA551FD5DD9700B26316 /* menu-vertical-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 1125AA541FD5DD9700B26316 /* menu-vertical-100.png */; };
 		1125AA5B1FD5E61F00B26316 /* menu-horizontal-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 1125AA5A1FD5E61F00B26316 /* menu-horizontal-100.png */; };
-		117900F21FD0D27D0037C64B /* InfoUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117900F11FD0D27D0037C64B /* InfoUserController.swift */; };
 		3261DDDE92CC7379B15839F6 /* Pods_Revimex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7157B05E32A444E4251D9884 /* Pods_Revimex.framework */; };
 		48B9B14F0C637A1897AF24BE /* Pods_RevimexUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4804135DFD212E74478102 /* Pods_RevimexUITests.framework */; };
 		520948571FCF407500A9239F /* favoritosSinLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 520948561FCF407300A9239F /* favoritosSinLogin.png */; };
-		520948931FD07E3200A9239F /* imagenNoEncontrada.png in Resources */ = {isa = PBXBuildFile; fileRef = 520948921FD07E2A00A9239F /* imagenNoEncontrada.png */; };
 		521E56131FC5F9F900D38947 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521E561A1FC5F9F900D38947 /* Bolts.framework */; };
 		521E56141FC5F9F900D38947 /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521E561B1FC5F9F900D38947 /* FacebookCore.framework */; };
 		521E56151FC5F9F900D38947 /* FacebookLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521E561C1FC5F9F900D38947 /* FacebookLogin.framework */; };
@@ -71,6 +69,8 @@
 		526DC6561FB68E95007CD85F /* GooglePlacePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526DC64F1FB67E59007CD85F /* GooglePlacePicker.framework */; };
 		526DC6571FB68E9F007CD85F /* GooglePlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526DC6511FB67FA3007CD85F /* GooglePlaces.framework */; };
 		526DC6581FB6920B007CD85F /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526DC6501FB67F8F007CD85F /* GoogleMaps.framework */; };
+		529810B21FD61657002723D1 /* InfoUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529810B11FD61656002723D1 /* InfoUserController.swift */; };
+		529810B81FD61EC1002723D1 /* imagenNoEncontrada.png in Resources */ = {isa = PBXBuildFile; fileRef = 529810B71FD61EC0002723D1 /* imagenNoEncontrada.png */; };
 		52A116D91FA7B50C002F6B59 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A116D81FA7B50C002F6B59 /* TableViewCell.swift */; };
 		52A116DB1FA7B962002F6B59 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A116DA1FA7B962002F6B59 /* DescriptionViewController.swift */; };
 		52A4C02C1FACD411003CAF69 /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A4C02B1FACD410003CAF69 /* Details.swift */; };
@@ -123,11 +123,9 @@
 		08DAFE6012832DE401274C36 /* Pods-RevimexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevimexUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RevimexUITests/Pods-RevimexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1125AA541FD5DD9700B26316 /* menu-vertical-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-vertical-100.png"; sourceTree = "<group>"; };
 		1125AA5A1FD5E61F00B26316 /* menu-horizontal-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-horizontal-100.png"; sourceTree = "<group>"; };
-		117900F11FD0D27D0037C64B /* InfoUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoUserController.swift; path = /Users/maquina53/XCodeProjects/Revimex/Revimex/InfoUserController.swift; sourceTree = "<absolute>"; };
 		38C718A7EB59A146890BB452 /* Pods-Revimex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revimex.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revimex/Pods-Revimex.release.xcconfig"; sourceTree = "<group>"; };
 		4A7853774D5C0684B9B300A4 /* Pods-RevimexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevimexTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RevimexTests/Pods-RevimexTests.release.xcconfig"; sourceTree = "<group>"; };
 		520948561FCF407300A9239F /* favoritosSinLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favoritosSinLogin.png; sourceTree = "<group>"; };
-		520948921FD07E2A00A9239F /* imagenNoEncontrada.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagenNoEncontrada.png; sourceTree = "<group>"; };
 		521E561A1FC5F9F900D38947 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		521E561B1FC5F9F900D38947 /* FacebookCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		521E561C1FC5F9F900D38947 /* FacebookLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +186,8 @@
 		526DC6521FB68027007CD85F /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		526DC6531FB68044007CD85F /* GooglePlacePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlacePicker.bundle; path = GooglePlacePicker.framework/Versions/A/Resources/GooglePlacePicker.bundle; sourceTree = "<group>"; };
 		526DC6541FB68054007CD85F /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		529810B11FD61656002723D1 /* InfoUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoUserController.swift; sourceTree = "<group>"; };
+		529810B71FD61EC0002723D1 /* imagenNoEncontrada.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagenNoEncontrada.png; sourceTree = "<group>"; };
 		52A116D81FA7B50C002F6B59 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		52A116DA1FA7B962002F6B59 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		52A4C02B1FACD410003CAF69 /* Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details.swift; sourceTree = "<group>"; };
@@ -286,6 +286,7 @@
 		526DC5F41FB2396B007CD85F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				529810B71FD61EC0002723D1 /* imagenNoEncontrada.png */,
 				1125AA5A1FD5E61F00B26316 /* menu-horizontal-100.png */,
 				1125AA541FD5DD9700B26316 /* menu-vertical-100.png */,
 				5231C1071FCD0FA200ED4C54 /* favoritoSeleccionado.png */,
@@ -388,7 +389,7 @@
 			children = (
 				526DC5F41FB2396B007CD85F /* Images */,
 				52B7200A1FA785F500F447DA /* AppDelegate.swift */,
-				117900F11FD0D27D0037C64B /* InfoUserController.swift */,
+				529810B11FD61656002723D1 /* InfoUserController.swift */,
 				52B7200C1FA785F500F447DA /* ViewController.swift */,
 				5221BE181FBE8A7200D0F89C /* LogInController.swift */,
 				52B7203F1FA78F4700F447DA /* StockController.swift */,
@@ -548,6 +549,7 @@
 				526DC61D1FB4C129007CD85F /* propiedades.png in Resources */,
 				526DC5FE1FB25554007CD85F /* principalMarker.png in Resources */,
 				52B720121FA785F500F447DA /* Assets.xcassets in Resources */,
+				529810B81FD61EC1002723D1 /* imagenNoEncontrada.png in Resources */,
 				5221BE1D1FBF8B8B00D0F89C /* cuenta.png in Resources */,
 				52A4C0301FB0E713003CAF69 /* SplashScreen.png in Resources */,
 				520948571FCF407500A9239F /* favoritosSinLogin.png in Resources */,
@@ -779,11 +781,11 @@
 			files = (
 				52A116D91FA7B50C002F6B59 /* TableViewCell.swift in Sources */,
 				52B720401FA78F4700F447DA /* StockController.swift in Sources */,
+				529810B21FD61657002723D1 /* InfoUserController.swift in Sources */,
 				52B7200D1FA785F500F447DA /* ViewController.swift in Sources */,
 				526DC6211FB4FC2B007CD85F /* SearchController.swift in Sources */,
 				5221BE191FBE8A7200D0F89C /* LogInController.swift in Sources */,
 				52A116DB1FA7B962002F6B59 /* DescriptionViewController.swift in Sources */,
-				117900F21FD0D27D0037C64B /* InfoUserController.swift in Sources */,
 				5221BDFD1FBA83FE00D0F89C /* Utilities.swift in Sources */,
 				5221BE1B1FBF77D000D0F89C /* FavoritesController.swift in Sources */,
 				52B7200B1FA785F500F447DA /* AppDelegate.swift in Sources */,
@@ -955,7 +957,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PXENVG785Y;
+				DEVELOPMENT_TEAM = 9K97DWZW76;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -978,7 +980,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PXENVG785Y;
+				DEVELOPMENT_TEAM = 9K97DWZW76;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

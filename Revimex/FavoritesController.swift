@@ -15,7 +15,12 @@ class FavoritesController: UIViewController {
     
     var arrayFavoitos = [Favorito]()
     
+    class goToDetailsGestureRecognizer: UITapGestureRecognizer {
+        var idPropiedad: String?
+    }
+    
     class Favorito{
+        var idPropiedad: String
         var estado: String
         var precio: String
         var referencia: String
@@ -23,7 +28,8 @@ class FavoritesController: UIViewController {
         var foto: UIImage
         var urlPropiedad: String
         
-        init(estado: String, precio: String, referencia: String, fechaAgregado: String, foto: UIImage, urlPropiedad: String){
+        init(idPropiedad: String,estado: String, precio: String, referencia: String, fechaAgregado: String, foto: UIImage, urlPropiedad: String){
+            self.idPropiedad = idPropiedad
             self.estado = estado
             self.precio = precio
             self.referencia = referencia
@@ -69,9 +75,9 @@ class FavoritesController: UIViewController {
         else{
             solicitarRegistro()
         }
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -100,15 +106,20 @@ class FavoritesController: UIViewController {
                         
                         if let favorito = element as? NSDictionary{
                             
-                            let objectFavorito = Favorito(estado: "", precio: "", referencia: "", fechaAgregado: "", foto: UIImage(named: "imagenNoEncontrada.png")!, urlPropiedad: "")
+                            let objectFavorito = Favorito(idPropiedad: "", estado: "", precio: "", referencia: "", fechaAgregado: "", foto: UIImage(named: "imagenNoEncontrada.png")!, urlPropiedad: "")
                             
                             if let edo = favorito["agregado"] as? String{
                                 objectFavorito.fechaAgregado = edo
                             }
                             
+                            if let idPropiedad = favorito["idPropiedad"] as? Int{
+                                objectFavorito.idPropiedad = String(idPropiedad)
+                            }
+                            
                             if let favoritoPropiedad = favorito["propiedades"] as? NSArray{
                                 for propiedad in favoritoPropiedad{
                                     if let atributoPropiedad = propiedad as? NSDictionary{
+                                        
                                         if let estado = atributoPropiedad["Estado__c"] as? String{
                                             objectFavorito.estado = estado
                                         }
@@ -132,7 +143,7 @@ class FavoritesController: UIViewController {
                             
                         }
                     }
-                  
+                    
                 }catch {
                     print(error)
                 }
@@ -142,7 +153,7 @@ class FavoritesController: UIViewController {
                 })
                 
             }
-        }.resume()
+            }.resume()
     }
     
     func mostrarMisFavoritos(){
@@ -188,30 +199,37 @@ class FavoritesController: UIViewController {
             titulo.text = "Detalles"
             titulo.font = titulo.font.withSize(15)
             let estado = UILabel()
-            estado.text = favorito.estado
+            estado.text = "Estado: "+favorito.estado
             let precio = UILabel()
-            precio.text = favorito.precio
+            precio.text = "Precio: $"+favorito.precio
             let referencia = UILabel()
-            referencia.text = favorito.referencia
+            referencia.text = "Referencia: "+favorito.referencia
             let agregado = UILabel()
-            agregado.text = favorito.fechaAgregado
-            let urlReferenciaBtn = UIButton()
-            urlReferenciaBtn.setTitle("Ver en "+favorito.referencia, for: .normal)
+            agregado.text = "Agregado: "+favorito.fechaAgregado
+            let detallesBtn = UIButton()
+            //            let urlReferenciaBtn = UIButton()
+            //            urlReferenciaBtn.setTitle("Ver en "+favorito.referencia, for: .normal)
             
-            titulo.frame = CGRect(x: 5,y: -5,width: anchoPantalla, height: (largoInfo * 0.2))
+            titulo.frame = CGRect(x: 5,y: -5,width: info.bounds.width, height: (largoInfo * 0.2))
             
-            estado.frame = CGRect(x: 0,y: (largoContenedor * 0.5),width: anchoPantalla/2, height: (largoContenedor * 0.33))
-            precio.frame = CGRect(x: 0,y: (largoContenedor * 0.6),width: anchoPantalla/2, height: (largoContenedor * 0.33))
-            referencia.frame = CGRect(x: anchoPantalla/2,y: (largoContenedor * 0.5),width: anchoPantalla/2, height: (largoContenedor * 0.33))
-            agregado.frame = CGRect(x: anchoPantalla/2,y: (largoContenedor * 0.6),width: anchoPantalla/2, height: (largoContenedor * 0.33))
-            urlReferenciaBtn.frame = CGRect(x: 0,y: (largoContenedor * 0.8),width: anchoPantalla, height: (largoContenedor * 0.33))
+            estado.frame = CGRect(x: 5,y: (largoInfo * 0.2),width: info.bounds.width, height: (largoInfo * 0.2))
+            precio.frame = CGRect(x: 5,y: (largoInfo * 0.4),width: info.bounds.width, height: (largoInfo * 0.2))
+            referencia.frame = CGRect(x: 5,y: (largoInfo * 0.6),width: info.bounds.width, height: (largoInfo * 0.2))
+            agregado.frame = CGRect(x: 5,y: (largoInfo * 0.8),width: info.bounds.width, height: (largoInfo * 0.2))
+            
+            let tapGestureRecognizerDetalles = goToDetailsGestureRecognizer(target: self, action: #selector(irDetalles(tapGestureRecognizer: )))
+            tapGestureRecognizerDetalles.idPropiedad = favorito.idPropiedad
+            detallesBtn.frame = CGRect(x: 0,y: 0,width: marcoFavorito.bounds.width, height: marcoFavorito.bounds.height)
+            detallesBtn.addGestureRecognizer(tapGestureRecognizerDetalles)
+            //urlReferenciaBtn.frame = CGRect(x: 0,y: (largoContenedor * 0.8),width: anchoPantalla, height: (largoContenedor * 0.33))
             
             info.addSubview(titulo)
-//            info.addSubview(estado)
-//            info.addSubview(precio)
-//            info.addSubview(referencia)
-//            info.addSubview(agregado)
-//            info.addSubview(urlReferenciaBtn)
+            info.addSubview(estado)
+            info.addSubview(precio)
+            info.addSubview(referencia)
+            info.addSubview(agregado)
+            info.addSubview(detallesBtn)
+            //            info.addSubview(urlReferenciaBtn)
             
             
             marcoFavorito.addSubview(foto)
@@ -262,5 +280,11 @@ class FavoritesController: UIViewController {
     @objc func sugerenciasTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         print("sugerencias")
     }
-
+    
+    @objc func irDetalles(tapGestureRecognizer: goToDetailsGestureRecognizer){
+        print(tapGestureRecognizer.idPropiedad!)
+        idOfertaSeleccionada = tapGestureRecognizer.idPropiedad!
+        performSegue(withIdentifier: "favoritesToDetails", sender: nil)
+    }
+    
 }

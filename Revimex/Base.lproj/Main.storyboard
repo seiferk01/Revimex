@@ -144,7 +144,7 @@
             <objects>
                 <navigationController storyboardIdentifier="navigationManager" id="vsU-5q-cxT" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bvt-hp-S7Q">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -264,7 +264,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ok1-pP-3uW">
-                                <rect key="frame" x="0.0" y="118" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="row" rowHeight="225" id="9d3-7S-YKz" customClass="TableViewCell" customModule="Revimex" customModuleProvider="target">
@@ -333,7 +333,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elige tu nuevo hogar!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elu-ks-Ehx">
-                                <rect key="frame" x="0.0" y="68" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="U0d-gR-UkI"/>
                                 </constraints>
@@ -398,6 +398,7 @@
                     <tabBarItem key="tabBarItem" title="Favoritos" image="favoritos.png" id="QA0-JN-cHv"/>
                     <connections>
                         <segue destination="4ck-kO-hfk" kind="show" identifier="favoritesToLogin" id="v7J-A9-GYw"/>
+                        <segue destination="bCG-VS-rd4" kind="show" identifier="favoritesToDetails" id="ksp-Hn-lKT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jld-QV-OcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -632,10 +633,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBZ-mB-H9r">
-                                <rect key="frame" x="10" y="54" width="355" height="230"/>
+                                <rect key="frame" x="10" y="10" width="355" height="274"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y3n-u4-JLM">
-                                        <rect key="frame" x="20" y="30" width="315" height="180"/>
+                                        <rect key="frame" x="20" y="30" width="315" height="224"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -822,7 +823,7 @@
         <image name="buscar.png" width="20" height="20"/>
         <image name="carrito.png" width="20" height="20"/>
         <image name="centroComercial.png" width="64" height="64"/>
-        <image name="compartir.ico" width="192" height="192"/>
+        <image name="compartir.ico" width="256" height="256"/>
         <image name="entrarConFcebook.png" width="300" height="100"/>
         <image name="escuelas.png" width="64" height="64"/>
         <image name="favoritos.png" width="20" height="20"/>
@@ -833,7 +834,8 @@
         <image name="restaurantes.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aZI-9L-R01"/>
+        <segue reference="B8x-QX-vSE"/>
+        <segue reference="ksp-Hn-lKT"/>
         <segue reference="h0d-7C-YOx"/>
         <segue reference="fkS-xS-2xe"/>
     </inferredMetricsTieBreakers>

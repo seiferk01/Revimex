@@ -66,7 +66,7 @@ class StockController: UIViewController,UITableViewDataSource {
             
             let imagenCuenta = UIImage(named: "cuenta.png")
             
-            imagenCuentaBtn.tag = 1;
+            //imagenCuentaBtn.tag = 1;
             imagenCuentaBtn.frame = CGRect(x: navigationBarSizeWidth!-navigationBarSizeHeigth!,y: 0.0,width: navigationBarSizeHeigth!,height: navigationBarSizeHeigth!)
             imagenCuentaBtn.setBackgroundImage(imagenCuenta, for: .normal)
             imagenCuentaBtn.addGestureRecognizer(tapGestureRecognizerImgAcct)
@@ -77,7 +77,7 @@ class StockController: UIViewController,UITableViewDataSource {
             
             let tapGestureRecognizerSignIn = UITapGestureRecognizer(target: self, action: #selector(incioSesionTapped(tapGestureRecognizer:)))
             
-            incioSesionBtn.tag = 2;
+            //incioSesionBtn.tag = 2;
             incioSesionBtn.setTitle("SignIn", for: .normal)
             incioSesionBtn.frame = CGRect(x: navigationBarSizeWidth! - (navigationBarSizeWidth! * (0.2)),y: 0.0,width: navigationBarSizeWidth! * (0.2),height: navigationBarSizeHeigth!)
             incioSesionBtn.layer.masksToBounds = false

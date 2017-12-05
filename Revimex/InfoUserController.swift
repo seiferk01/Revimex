@@ -124,8 +124,8 @@ class InfoUserController: UIViewController {
         
         let session = URLSession.shared;
         session.dataTask(with: request){ (data,response,error) in
-            print(response);
-            print(error);
+            
+            
             if(error == nil){
                 
                 if let data = data{
@@ -148,7 +148,7 @@ class InfoUserController: UIViewController {
                     self.present(alert,animated:true,completion:nil);
                 }
             }
-            }.resume();
+        }.resume();
         
     }
     
@@ -204,9 +204,9 @@ class InfoUserController: UIViewController {
                     do{
                         let json = try JSONSerialization.jsonObject(with: data) as! [String:Any?];
                         
-                        let dataImg: NSData? = Utilities.traerImagen(urlImagen: Utilities.sinFoto);
+                        //let dataImg: NSData? = Utilities.traerImagen(urlImagen: Utilities.sinFoto);
                         
-                        self.colocarInfo(json,data: dataImg);
+                        self.colocarInfo(json,data: Utilities.traerImagen(urlImagen: ""));
                     }catch{
                         print(error);
                     }
@@ -219,7 +219,7 @@ class InfoUserController: UIViewController {
     
     
     //Coloca la información del usuario en los TextFields
-    private func colocarInfo(_ json:[String:Any?],data: NSData!){
+    private func colocarInfo(_ json:[String:Any?],data: UIImage!){
         OperationQueue.main.addOperation {
             self.txFlEmailUser.text = json["email"] as? String;
             self.txFlNameUser.text = json["name"] as? String;
@@ -232,7 +232,7 @@ class InfoUserController: UIViewController {
             self.txFlFechaNacUser.text = json["fecha_nacimiento"] as? String;
             self.txFlDirUser.text = json["direccion"] as? String;
             self.txFlRFCUser.text = json["rfc"] as? String;
-            self.imgUser.image = UIImage(data: data as Data);
+            self.imgUser.image = data;
         }
     }
     

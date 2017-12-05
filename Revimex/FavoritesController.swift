@@ -82,8 +82,25 @@ class FavoritesController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let userId = UserDefaults.standard.object(forKey: "userId") as? Int,arrayFavoitos.count > 0,cambioFavoritos{
+            msotrarFavoritos(userId: userId)
+        }
+    }
+    
     
     func msotrarFavoritos(userId: Int){
+        
+        //indicador de loading
+        let activityIndicator = UIActivityIndicatorView()
+        let background = Utilities.activityIndicatorBackground(activityIndicator: activityIndicator)
+        background.center = self.view.center
+        view.addSubview(background)
+        activityIndicator.startAnimating()
+        
+        arrayFavoitos = []
         
         let urlFvoritos =  "http://18.221.106.92/api/public/favorites/" + String(userId)
         
@@ -149,11 +166,14 @@ class FavoritesController: UIViewController {
                 }
                 
                 OperationQueue.main.addOperation({
+                    cambioFavoritos = false
                     self.mostrarMisFavoritos()
+                    activityIndicator.stopAnimating()
+                    background.removeFromSuperview()
                 })
                 
             }
-            }.resume()
+        }.resume()
     }
     
     func mostrarMisFavoritos(){
@@ -228,15 +248,19 @@ class FavoritesController: UIViewController {
             info.addSubview(precio)
             info.addSubview(referencia)
             info.addSubview(agregado)
-            info.addSubview(detallesBtn)
             //            info.addSubview(urlReferenciaBtn)
             
             
             marcoFavorito.addSubview(foto)
             marcoFavorito.addSubview(info)
+            marcoFavorito.addSubview(detallesBtn)
             contenedorFavoritos.addSubview(marcoFavorito)
         }
         
+        if let oldContainer = self.view.viewWithTag(100){
+            oldContainer.removeFromSuperview()
+        }
+        contenedorFavoritos.tag = 100
         view.addSubview(contenedorFavoritos)
         view.sendSubview(toBack: contenedorFavoritos)
         

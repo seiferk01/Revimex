@@ -489,7 +489,7 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
     }
     
     
-    //funciones favoritos
+    //***************************funciones favoritos**********************************
     @IBAction func favoritos(_ sender: Any) {
         
         if let userId = UserDefaults.standard.object(forKey: "userId") as? Int{
@@ -538,6 +538,7 @@ class DescriptionViewController: UIViewController, MGLMapViewDelegate {
                     }
                     
                     OperationQueue.main.addOperation({
+                        cambioFavoritos = true
                         self.revisarFavoritos()
                     })
                     

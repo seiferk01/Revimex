@@ -22,17 +22,16 @@ class StockController: UIViewController,UITableViewDataSource {
     //arreglo para guardar los datos del json
     var arregloOfertas = [Oferta]()
     
-    //variable para indicador "loading"
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    
     //objeto para guardar los datos del json de lista
     class Oferta {
+        var referencia: String
         var estado: String
         var precio: String
         var foto: UIImage
         var id: String
         
-        init(id: String,estado: String, precio: String, foto: UIImage ){
+        init(referencia: String,id: String,estado: String, precio: String, foto: UIImage ){
+            self.referencia = referencia
             self.id = id
             self.estado = estado
             self.precio = precio
@@ -104,14 +103,12 @@ class StockController: UIViewController,UITableViewDataSource {
     func requestData(url: String){
         
         //indicador de loading
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        view.addSubview(activityIndicator)
+        let activityIndicator = UIActivityIndicatorView()
+        let background = Utilities.activityIndicatorBackground(activityIndicator: activityIndicator)
+        background.center = self.view.center
+        view.addSubview(background)
         activityIndicator.startAnimating()
         
-        //variable para guardar el estatus de la llamada
-        var mensaje: String = ""
         
         //url para la llamada
         guard let url = URL(string: url) else { return }
@@ -130,10 +127,6 @@ class StockController: UIViewController,UITableViewDataSource {
                 do {
                     let json = try JSONSerialization.jsonObject (with: data) as! [String:Any?]
                     
-                    if json["mensaje"] != nil {
-                        mensaje = json["mensaje"] as! String
-                    }
-                    
                     print("json de propiedades: ")
                     print(json["propiedades"]!!)
                     
@@ -147,7 +140,11 @@ class StockController: UIViewController,UITableViewDataSource {
                                     print("************Inicia propiedad************")
                                     print(atribute)
                                     
-                                    let oferta: Oferta = Oferta(id: "",estado: "",precio: "",foto: UIImage(named: "imagenNoEncontrada.png")!)
+                                    let oferta: Oferta = Oferta(referencia: "",id: "",estado: "",precio: "",foto: UIImage(named: "imagenNoEncontrada.png")!)
+                                    
+                                    if let refer = atribute["Referencia"] as? String{
+                                        oferta.referencia = refer
+                                    }
                                     
                                     if let idProp = atribute["idp"] as? Int{
                                         oferta.id = String(idProp)
@@ -191,9 +188,8 @@ class StockController: UIViewController,UITableViewDataSource {
                 
                 OperationQueue.main.addOperation({
                     self.tableView.reloadData()
-                    if (mensaje == "success"){
-                        self.activityIndicator.stopAnimating()
-                    }
+                    activityIndicator.stopAnimating()
+                    background.removeFromSuperview()
                 })
                 
             }
@@ -210,10 +206,13 @@ class StockController: UIViewController,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let row = tableView.dequeueReusableCell(withIdentifier: "row") as! TableViewCell
         row.idOfertaActual = arregloOfertas[indexPath.row].id
+        row.referencia.textColor = UIColor.white
         row.estado.textColor = UIColor.white
         row.precio.textColor = UIColor.white
+        row.referencia.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
         row.estado.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
         row.precio.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
+        row.referencia.text = arregloOfertas[indexPath.row].referencia
         row.estado.text = arregloOfertas[indexPath.row].estado
         row.precio.text = "$" + arregloOfertas[indexPath.row].precio
         row.vistaFoto.image = arregloOfertas[indexPath.row].foto
@@ -237,11 +236,6 @@ class StockController: UIViewController,UITableViewDataSource {
     
     @objc func imagenCuentaTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         performSegue(withIdentifier: "stockToInfo", sender: nil)
-        /*UserDefaults.standard.removeObject(forKey: "usuario")
-         UserDefaults.standard.removeObject(forKey: "contraseña")
-         UserDefaults.standard.removeObject(forKey: "userId")
-         navBarStyleCase = 0
-         navigationController?.navigationBar.isHidden = true*/
     }
     
     

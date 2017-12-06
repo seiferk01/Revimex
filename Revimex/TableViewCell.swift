@@ -14,6 +14,8 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var vistaFoto: UIImageView!
     @IBOutlet weak var estado: UILabel!
     @IBOutlet weak var precio: UILabel!
+    @IBOutlet weak var referencia: UILabel!
+    
     
     var idOfertaActual: String = ""
     

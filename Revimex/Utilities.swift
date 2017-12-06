@@ -88,25 +88,29 @@ var gris = UIColor(hexString: "#3B3B3Bff")
 //variable global, obtiene un valor en TableViewCell.swift dependiendo de la propiedad que se selecciono
 var idOfertaSeleccionada = ""
 
+//botones de la barra de navegacion
 var incioSesionBtn = UIButton()
 var imagenCuentaBtn = UIButton()
 
 //indica el tipo de estilo para la barra de navegacion
 var withNavBarStyle = true
-
 var navBarStyleCase = 0
+
+//bandera para refresacar la vista de favoritos
+var cambioFavoritos = false
 
 class Utilities: NSObject {
 
     //recibe una url en tipo string, la procesa y la regresa como imagen
     static func traerImagen(urlImagen: String) -> UIImage{
-        
         var imagen = UIImage(named: "imagenNoEncontrada.png")
         
         let imgURL = NSURL(string: urlImagen)
         
-        if let data = NSData(contentsOf: (imgURL as URL?)!){
-            imagen = UIImage(data: data as Data)
+        if let data = imgURL as URL?{
+            if let data = NSData(contentsOf: data){
+                imagen = UIImage(data: data as Data)
+            }
         }
         
         return imagen!
@@ -120,6 +124,22 @@ class Utilities: NSObject {
         return emailTest.evaluate(with: testStr)
     }
     
+    //crea el fondo del UIActivityIndicatorView
+    static func activityIndicatorBackground(activityIndicator: UIActivityIndicatorView)->UIView{
+        
+        let background = UIView()
+        
+        background.frame.size = CGSize(width: 80, height: 80)
+        background.layer.backgroundColor = UIColor.black.withAlphaComponent(0.8).cgColor
+        background.layer.cornerRadius = 10
+        
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        activityIndicator.center = background.center
+        background.addSubview(activityIndicator)
+        
+        return background
+    }
     
     
 }

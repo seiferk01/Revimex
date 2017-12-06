@@ -304,6 +304,12 @@
                                                         <segue destination="bCG-VS-rd4" kind="show" identifier="irDetalles" id="aZI-9L-R01"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Referencia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jul-dd-JYg">
+                                                    <rect key="frame" x="273.5" y="184.5" width="81.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="4Ik-WH-w60" firstAttribute="trailing" secondItem="0qN-Dk-GQl" secondAttribute="trailing" id="0eS-S7-Aff"/>
@@ -311,18 +317,21 @@
                                                 <constraint firstItem="0qN-Dk-GQl" firstAttribute="leading" secondItem="7K5-5y-6zI" secondAttribute="leading" constant="-20" id="EZ1-Ri-Mut"/>
                                                 <constraint firstItem="7K5-5y-6zI" firstAttribute="top" secondItem="n7k-vK-cjQ" secondAttribute="bottom" constant="10" id="Ggw-zn-8Fp"/>
                                                 <constraint firstItem="4Ik-WH-w60" firstAttribute="bottom" secondItem="0qN-Dk-GQl" secondAttribute="bottom" id="OL5-3f-Rw7"/>
+                                                <constraint firstItem="jul-dd-JYg" firstAttribute="trailing" secondItem="4Ik-WH-w60" secondAttribute="trailing" constant="-5" id="UPC-Os-0Wh"/>
                                                 <constraint firstItem="n7k-vK-cjQ" firstAttribute="top" secondItem="0qN-Dk-GQl" secondAttribute="top" constant="125" id="UW4-H2-qCW"/>
                                                 <constraint firstAttribute="bottom" secondItem="0qN-Dk-GQl" secondAttribute="bottom" constant="10" id="dyk-75-KNa"/>
                                                 <constraint firstItem="0qN-Dk-GQl" firstAttribute="top" secondItem="VH5-vT-uvZ" secondAttribute="top" constant="10" id="gPA-V5-jO2"/>
                                                 <constraint firstItem="4Ik-WH-w60" firstAttribute="top" secondItem="0qN-Dk-GQl" secondAttribute="top" id="mRO-8m-etW"/>
                                                 <constraint firstItem="4Ik-WH-w60" firstAttribute="leading" secondItem="0qN-Dk-GQl" secondAttribute="leading" id="pFv-ac-K4Q"/>
                                                 <constraint firstAttribute="trailing" secondItem="0qN-Dk-GQl" secondAttribute="trailing" constant="15" id="rtB-38-aSs"/>
+                                                <constraint firstItem="jul-dd-JYg" firstAttribute="bottom" secondItem="4Ik-WH-w60" secondAttribute="bottom" constant="-5" id="tFq-YP-ZnP"/>
                                                 <constraint firstItem="UiQ-R2-9Jz" firstAttribute="leading" secondItem="VH5-vT-uvZ" secondAttribute="leading" constant="10" id="tP8-Mb-kMF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="estado" destination="n7k-vK-cjQ" id="Ryz-fa-zWv"/>
                                             <outlet property="precio" destination="7K5-5y-6zI" id="uSD-vq-RfZ"/>
+                                            <outlet property="referencia" destination="jul-dd-JYg" id="6ri-ze-055"/>
                                             <outlet property="vistaFoto" destination="0qN-Dk-GQl" id="nuR-PX-T7I"/>
                                         </connections>
                                     </tableViewCell>
@@ -925,6 +934,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="ivx-oX-pij"/>
         <segue reference="h0d-7C-YOx"/>
-        <segue reference="fkS-xS-2xe"/>
+        <segue reference="QYd-vS-5Ig"/>
     </inferredMetricsTieBreakers>
 </document>

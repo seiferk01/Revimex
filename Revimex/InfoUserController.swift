@@ -25,11 +25,14 @@ class InfoUserController: UIViewController {
     @IBOutlet weak var txFlRFCUser: UITextField!;
     
     @IBOutlet weak var btGuardar: UIButton!
+    private let fltBtn:UIButton! = UIButton();
     
     private var user_id : String!;
     private var cuentaBtn: UIButton!;
     private var tapGesture: UITapGestureRecognizer!;
     private var menuContainer: UIView!;
+    
+    
     
     
     override func viewDidLoad() {
@@ -56,8 +59,11 @@ class InfoUserController: UIViewController {
         
         txFlEmailUser.placeholder = "Email" ;
         txFlEmailUser.keyboardType = UIKeyboardType.emailAddress;
+        txFlEmailUser.isEnabled = false;
+        txFlEmailUser.tag = 5;
         
         txFlNameUser.placeholder = "Nombre (s)";
+        
         txFlPApellidoUser.placeholder = "Apellido Paterno";
         txFlSApellidoUser.placeholder = "Apellido Materno";
         txFlEstadoUser.placeholder = "Estado";
@@ -75,9 +81,14 @@ class InfoUserController: UIViewController {
         txFlDirUser.placeholder = "Dirección";
         txFlRFCUser.placeholder = "RFC";
         
+        btGuardar.isHidden = true;
+        
+        disable_EnableAllSub(principal: scVwDatosUser)
+        
+        btnFlotante();
         obtInfoUser();
         
-        
+        print(scVwDatosUser.contentSize.height);
         
     }
     
@@ -89,6 +100,9 @@ class InfoUserController: UIViewController {
     @IBAction func actionGuardar(_ sender: Any) {
         if(Utilities.isValidEmail(testStr: txFlEmailUser.text!)){
             self.setInfoUser();
+            self.disable_EnableAllSub(principal: scVwDatosUser);
+            btGuardar.isHidden = true;
+            fltBtn.isHidden = false;
         }
     }
     
@@ -131,7 +145,6 @@ class InfoUserController: UIViewController {
                 if let data = data{
                     do{
                         let json = try JSONSerialization.jsonObject(with: data) as! [String:Any?];
-                        print(json);
                     }catch{
                         print(error);
                     }
@@ -150,6 +163,28 @@ class InfoUserController: UIViewController {
             }
         }.resume();
         
+    }
+    
+    //Crea el botón flotante
+    private func btnFlotante(){
+        
+        
+        let subScreen = scVwDatosUser.bounds;
+        print(subScreen.width);
+        print(subScreen.height);
+        fltBtn.frame = CGRect(x: subScreen.width - 45, y: subScreen.height - 45, width: 38, height: 38);
+        fltBtn.setBackgroundImage(UIImage(named: "pencil.png"), for: .normal);
+        fltBtn.contentMode = .scaleToFill;
+        fltBtn.backgroundColor = UIColor.white;
+        fltBtn.clipsToBounds = true;
+        fltBtn.layer.cornerRadius = 15;
+        fltBtn.layer.shadowRadius = 1.2;
+        fltBtn.layer.shadowOffset = CGSize(width: 0.8, height: 0.8);
+        fltBtn.layer.shadowOpacity = 0.5;
+        
+        fltBtn.addTarget(self, action: #selector(InfoUserController.EnableEdit), for: .touchUpInside);
+        
+        scVwDatosUser.addSubview(fltBtn);
     }
     
     //Crear menu
@@ -246,6 +281,16 @@ class InfoUserController: UIViewController {
         super.viewWillDisappear(animated);
     }
     
+    private func disable_EnableAllSub(principal: UIView!){
+        
+        for node in principal.subviews{
+            if let sub = node as? UITextField {
+                if(node.tag != 5){
+                    sub.isEnabled = !sub.isEnabled;
+                }
+            }
+        }
+    }
     
     @objc func menuTapped(tapGestureRecognizer: UITapGestureRecognizer){
         menuContainer.isHidden = !menuContainer.isHidden
@@ -258,6 +303,17 @@ class InfoUserController: UIViewController {
         navBarStyleCase = 0;
         navigationController?.navigationBar.isHidden = true;
         performSegue(withIdentifier: "infoToLogin", sender: nil)
+    }
+    
+    @objc func EnableEdit(){
+        btGuardar.isHidden = false;
+        fltBtn.isHidden = true;
+        disable_EnableAllSub(principal: scVwDatosUser);
+        
+        let alert = UIAlertController(title: "Aviso", message: "Ahora puede editar su perfil", preferredStyle: UIAlertControllerStyle.alert);
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert,animated:true,completion:nil);
+        
     }
     
     

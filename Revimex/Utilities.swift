@@ -107,8 +107,10 @@ class Utilities: NSObject {
         
         let imgURL = NSURL(string: urlImagen)
         
-        if let data = NSData(contentsOf: (imgURL as URL?)!){
-            imagen = UIImage(data: data as Data)
+        if let data = imgURL as URL?{
+            if let data = NSData(contentsOf: data){
+                imagen = UIImage(data: data as Data)
+            }
         }
         
         return imagen!

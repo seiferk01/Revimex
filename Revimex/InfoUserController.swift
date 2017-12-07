@@ -187,7 +187,7 @@ class InfoUserController: UIViewController {
         scVwDatosUser.addSubview(fltBtn);
     }
     
-    //Crear menu
+    //Crear menu contextual
     private func iniMenu(){
         
         let screenSize = UIScreen.main.bounds;

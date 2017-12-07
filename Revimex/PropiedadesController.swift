@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 class PropiedadesController: UIViewController {
     
     @IBOutlet weak var sgCtrlPropiedades: UISegmentedControl!
     @IBOutlet weak var cnVwPropiedades: UIView!
+    @IBOutlet weak var btnNvPropiedad_Inversion: UIButton!
+    @IBOutlet weak var labelSeccion: UILabel!
     
-    var misPropiedades: UIViewController!;
+    var misPropiedades: MisPropiedadesController!;
     var misInversiones: UIViewController!;
+    
+    
     
     private var activeViewController: UIViewController?{
         didSet{
@@ -24,12 +29,34 @@ class PropiedadesController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad();
-        let storyboard = UIStoryboard(name: "Main", bundle: nil);
-        misPropiedades = storyboard.instantiateViewController(withIdentifier: "MisPropiedades");
-        misInversiones = storyboard.instantiateViewController(withIdentifier: "MisInversiones");
-        
-        
+        labelSeccion.isHidden = true;
+        if((UserDefaults.standard.object(forKey: "userId") as? Int) != nil){
+            super.viewDidLoad();
+            let storyboard = UIStoryboard(name: "Main", bundle: nil);
+            misPropiedades = storyboard.instantiateViewController(withIdentifier: "MisPropiedades") as! MisPropiedadesController;
+            misInversiones = storyboard.instantiateViewController(withIdentifier: "MisInversiones");
+            activeViewController = misPropiedades;
+            
+            
+            
+            btnNvPropiedad_Inversion.titleLabel?.font = UIFont.fontAwesome(ofSize: 36);
+            btnNvPropiedad_Inversion.setTitle(String.fontAwesomeIcon(name: .plusCircle), for: .normal);
+            btnNvPropiedad_Inversion.backgroundColor = UIColor.white;
+            btnNvPropiedad_Inversion.layer.cornerRadius = 18;
+            btnNvPropiedad_Inversion.layer.shadowRadius = 1.2;
+            btnNvPropiedad_Inversion.layer.shadowColor = UIColor.black.cgColor;
+            btnNvPropiedad_Inversion.layer.shadowOffset = CGSize(width: 0.8, height: 0.8);
+            btnNvPropiedad_Inversion.layer.shadowOpacity = 0.8;
+            
+            let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(changeContentView(_:)));
+            rightSwipe.direction = .right;
+            
+        }else{
+            labelSeccion.isHidden = false;
+            sgCtrlPropiedades.isHidden = true;
+            cnVwPropiedades.isHidden = true;
+            btnNvPropiedad_Inversion.isHidden = true;
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,12 +81,16 @@ class PropiedadesController: UIViewController {
         }
     }
     
+    @IBAction func nvPropiedad_Inversion(_ sender: UIButton) {
+        performSegue(withIdentifier: "nvPropiedad", sender: nil);
+    }
+    
     @IBAction func changeContentView(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 1:
+        case 0:
             activeViewController = misPropiedades;
             break;
-        case 2:
+        case 1:
             activeViewController = misInversiones;
             break;
         default:

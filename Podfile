@@ -10,7 +10,8 @@ target 'Revimex' do
   pod 'FacebookLogin'
   pod 'FacebookShare'
   pod 'IQKeyboardManagerSwift'
-  pod 'Floaty', '~> 4.0.0'
+  pod 'FontAwesome.swift'
+  pod 'Eureka'
 
   # Pods for Revimex
 

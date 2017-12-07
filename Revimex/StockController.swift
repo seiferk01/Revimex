@@ -12,8 +12,14 @@ import Darwin
 
 class StockController: UIViewController,UITableViewDataSource {
     
-    //referencia a tabla en la vista
+    //variables de referencia en la vista
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var contenedorVista: UIScrollView!
+    @IBOutlet weak var imagenBinvenida: UIImageView!
+    @IBOutlet weak var registroBtn: UIButton!
+    @IBOutlet weak var etiquetaBienvenida: UILabel!
+    @IBOutlet weak var lineasDeNegocio: UIView!
+    
     
     //variables para la siguiente url de cada pagina
     var paginaSiguiente: String = "http://18.221.106.92/api/public/propiedades/lista"
@@ -43,6 +49,21 @@ class StockController: UIViewController,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //genera la vista de la pagina
+        crearVista()
+        
+        //llamado a la lista de propiedades
+        requestData(url: paginaSiguiente)
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+    }
+    
+    //genera la vista
+    func crearVista(){
         //configuracion de la vista de la barra de navegacion
         navigationController?.navigationBar.isHidden = false
         let navigationBarSize = navigationController?.navigationBar.bounds
@@ -58,8 +79,14 @@ class StockController: UIViewController,UITableViewDataSource {
         
         navigationController?.navigationBar.addSubview(contenedorLogo)
         
-        //si ya se tiene id de usuario miestra el boton de cuenta, si no el de signin
+        imagenBinvenida.image = UIImage(named: "revimexBienvenida.jpg")
+        
+        //si ya se tiene id de usuario muestra el boton de cuenta, si no el de signin
         if (UserDefaults.standard.object(forKey: "userId") as? Int) != nil{
+            
+            registroBtn.isHidden = true
+            etiquetaBienvenida.isHidden = false
+            
             let tapGestureRecognizerImgAcct = UITapGestureRecognizer(target: self, action: #selector(imagenCuentaTapped(tapGestureRecognizer:)))
             
             
@@ -74,6 +101,9 @@ class StockController: UIViewController,UITableViewDataSource {
         }
         else{
             
+            registroBtn.isHidden = false
+            etiquetaBienvenida.isHidden = true
+            
             let tapGestureRecognizerSignIn = UITapGestureRecognizer(target: self, action: #selector(incioSesionTapped(tapGestureRecognizer:)))
             
             //incioSesionBtn.tag = 2;
@@ -87,16 +117,6 @@ class StockController: UIViewController,UITableViewDataSource {
             incioSesionBtn.addGestureRecognizer(tapGestureRecognizerSignIn)
             navigationController?.navigationBar.addSubview(incioSesionBtn)
         }
-        
-        
-        //llamado a la lista de propiedades
-        requestData(url: paginaSiguiente)
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
     }
     
     //llamado a la lista de propiedades
@@ -236,6 +256,12 @@ class StockController: UIViewController,UITableViewDataSource {
     
     @objc func imagenCuentaTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         performSegue(withIdentifier: "stockToInfo", sender: nil)
+    }
+    
+    @IBAction func goToLogin(_ sender: Any) {
+        //oculta la barra de navegacion del login
+        navBarStyleCase = 1
+        performSegue(withIdentifier: "stockToLogin", sender: nil)
     }
     
     

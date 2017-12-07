@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1125AA551FD5DD9700B26316 /* menu-vertical-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 1125AA541FD5DD9700B26316 /* menu-vertical-100.png */; };
 		1125AA5B1FD5E61F00B26316 /* menu-horizontal-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 1125AA5A1FD5E61F00B26316 /* menu-horizontal-100.png */; };
+		117DC6BE1FD7346D0009F6AB /* menu-vertical-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 117DC6BD1FD7346D0009F6AB /* menu-vertical-24.png */; };
+		117DC6C01FD738460009F6AB /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 117DC6BF1FD738460009F6AB /* pencil.png */; };
+		11C266351FD768D00051AC05 /* PropiedadesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C266341FD768D00051AC05 /* PropiedadesController.swift */; };
+		11C266371FD87A850051AC05 /* MisPropiedadesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C266361FD87A850051AC05 /* MisPropiedadesController.swift */; };
+		11C266391FD87CA20051AC05 /* MisPropiedadesCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C266381FD87CA20051AC05 /* MisPropiedadesCellController.swift */; };
+		11C2663B1FD89D6C0051AC05 /* SubirPropiedadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2663A1FD89D6C0051AC05 /* SubirPropiedadViewController.swift */; };
+		11C2663D1FD8CABB0051AC05 /* DetallesInmuebleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2663C1FD8CABB0051AC05 /* DetallesInmuebleController.swift */; };
 		3261DDDE92CC7379B15839F6 /* Pods_Revimex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7157B05E32A444E4251D9884 /* Pods_Revimex.framework */; };
 		48B9B14F0C637A1897AF24BE /* Pods_RevimexUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4804135DFD212E74478102 /* Pods_RevimexUITests.framework */; };
 		521E56131FC5F9F900D38947 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521E561A1FC5F9F900D38947 /* Bolts.framework */; };
@@ -122,8 +128,14 @@
 
 /* Begin PBXFileReference section */
 		08DAFE6012832DE401274C36 /* Pods-RevimexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevimexUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RevimexUITests/Pods-RevimexUITests.release.xcconfig"; sourceTree = "<group>"; };
-		1125AA541FD5DD9700B26316 /* menu-vertical-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-vertical-100.png"; sourceTree = "<group>"; };
 		1125AA5A1FD5E61F00B26316 /* menu-horizontal-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-horizontal-100.png"; sourceTree = "<group>"; };
+		117DC6BD1FD7346D0009F6AB /* menu-vertical-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-vertical-24.png"; sourceTree = "<group>"; };
+		117DC6BF1FD738460009F6AB /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
+		11C266341FD768D00051AC05 /* PropiedadesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropiedadesController.swift; sourceTree = "<group>"; };
+		11C266361FD87A850051AC05 /* MisPropiedadesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MisPropiedadesController.swift; sourceTree = "<group>"; };
+		11C266381FD87CA20051AC05 /* MisPropiedadesCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MisPropiedadesCellController.swift; sourceTree = "<group>"; };
+		11C2663A1FD89D6C0051AC05 /* SubirPropiedadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubirPropiedadViewController.swift; sourceTree = "<group>"; };
+		11C2663C1FD8CABB0051AC05 /* DetallesInmuebleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetallesInmuebleController.swift; sourceTree = "<group>"; };
 		38C718A7EB59A146890BB452 /* Pods-Revimex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revimex.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revimex/Pods-Revimex.release.xcconfig"; sourceTree = "<group>"; };
 		4A7853774D5C0684B9B300A4 /* Pods-RevimexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevimexTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RevimexTests/Pods-RevimexTests.release.xcconfig"; sourceTree = "<group>"; };
 		521E561A1FC5F9F900D38947 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -291,7 +303,6 @@
 				52495A281FD8C87900E5F362 /* revimexBienvenida.jpg */,
 				529810B71FD61EC0002723D1 /* imagenNoEncontrada.png */,
 				1125AA5A1FD5E61F00B26316 /* menu-horizontal-100.png */,
-				1125AA541FD5DD9700B26316 /* menu-vertical-100.png */,
 				5231C1071FCD0FA200ED4C54 /* favoritoSeleccionado.png */,
 				52980A1B1FD7253E00576CD8 /* favoritosSinLogin.png */,
 				5221BE141FBE103800D0F89C /* buscarFiltros.png */,
@@ -401,11 +412,16 @@
 				526DC6201FB4FC2B007CD85F /* SearchController.swift */,
 				5221BE1A1FBF77D000D0F89C /* FavoritesController.swift */,
 				52B7200E1FA785F500F447DA /* Main.storyboard */,
+				11C2663A1FD89D6C0051AC05 /* SubirPropiedadViewController.swift */,
+				11C266361FD87A850051AC05 /* MisPropiedadesController.swift */,
+				11C266381FD87CA20051AC05 /* MisPropiedadesCellController.swift */,
+				11C266341FD768D00051AC05 /* PropiedadesController.swift */,
 				5221BDFC1FBA83FD00D0F89C /* Utilities.swift */,
 				52A4C02B1FACD410003CAF69 /* Details.swift */,
 				52B720111FA785F500F447DA /* Assets.xcassets */,
 				52B720131FA785F500F447DA /* LaunchScreen.storyboard */,
 				52B720161FA785F500F447DA /* Info.plist */,
+				11C2663C1FD8CABB0051AC05 /* DetallesInmuebleController.swift */,
 			);
 			path = Revimex;
 			sourceTree = "<group>";
@@ -565,16 +581,17 @@
 				52B720101FA785F500F447DA /* Main.storyboard in Resources */,
 				5221BE091FBB784700D0F89C /* convenience_store.png in Resources */,
 				5221BE071FBB784700D0F89C /* restaurant.png in Resources */,
-				1125AA551FD5DD9700B26316 /* menu-vertical-100.png in Resources */,
 				5221BE061FBB784700D0F89C /* shopping_mall.png in Resources */,
 				52495A291FD8C87A00E5F362 /* revimexBienvenida.jpg in Resources */,
 				526DC6171FB4BE5B007CD85F /* favoritos.png in Resources */,
 				5221BE051FBB784700D0F89C /* park.png in Resources */,
 				526DC5EF1FB21D9F007CD85F /* hospitales.png in Resources */,
 				526DC5F21FB21D9F007CD85F /* centroComercial.png in Resources */,
+				117DC6C01FD738460009F6AB /* pencil.png in Resources */,
 				526DC5F01FB21D9F007CD85F /* Tiendas.png in Resources */,
 				526DC61F1FB4F43F007CD85F /* buscar.png in Resources */,
 				521E56241FC669B600D38947 /* compartir.ico in Resources */,
+				117DC6BE1FD7346D0009F6AB /* menu-vertical-24.png in Resources */,
 				526DC5ED1FB21D9F007CD85F /* parques.png in Resources */,
 				5221BE0D1FBB7DBA00D0F89C /* houseMarker.png in Resources */,
 				5221BE151FBE103800D0F89C /* buscarFiltros.png in Resources */,
@@ -722,23 +739,27 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Revimex/Pods-Revimex-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -785,6 +806,7 @@
 			files = (
 				52A116D91FA7B50C002F6B59 /* TableViewCell.swift in Sources */,
 				52B720401FA78F4700F447DA /* StockController.swift in Sources */,
+				11C266391FD87CA20051AC05 /* MisPropiedadesCellController.swift in Sources */,
 				529810B21FD61657002723D1 /* InfoUserController.swift in Sources */,
 				52B7200D1FA785F500F447DA /* ViewController.swift in Sources */,
 				526DC6211FB4FC2B007CD85F /* SearchController.swift in Sources */,
@@ -793,7 +815,11 @@
 				5221BDFD1FBA83FE00D0F89C /* Utilities.swift in Sources */,
 				5221BE1B1FBF77D000D0F89C /* FavoritesController.swift in Sources */,
 				52B7200B1FA785F500F447DA /* AppDelegate.swift in Sources */,
+				11C266351FD768D00051AC05 /* PropiedadesController.swift in Sources */,
+				11C2663D1FD8CABB0051AC05 /* DetallesInmuebleController.swift in Sources */,
+				11C266371FD87A850051AC05 /* MisPropiedadesController.swift in Sources */,
 				52A4C02C1FACD411003CAF69 /* Details.swift in Sources */,
+				11C2663B1FD89D6C0051AC05 /* SubirPropiedadViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -141,5 +141,14 @@ class Utilities: NSObject {
         return background
     }
     
+    public static func genearSombras(_ button: UIButton!)->UIButton!{
+        button.layer.masksToBounds = false;
+        button.layer.shadowRadius = 1;
+        button.layer.shadowColor = UIColor.black.cgColor;
+        button.layer.shadowOffset = CGSize(width: 0.7, height: 0.7);
+        button.layer.shadowOpacity = 0.5;
+        return button;
+    }
+    
     
 }

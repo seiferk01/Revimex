@@ -11,7 +11,6 @@
 		117DC6BE1FD7346D0009F6AB /* menu-vertical-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 117DC6BD1FD7346D0009F6AB /* menu-vertical-24.png */; };
 		117DC6C01FD738460009F6AB /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 117DC6BF1FD738460009F6AB /* pencil.png */; };
 		11C266351FD768D00051AC05 /* PropiedadesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C266341FD768D00051AC05 /* PropiedadesController.swift */; };
-		11C266371FD87A850051AC05 /* MisPropiedadesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C266361FD87A850051AC05 /* MisPropiedadesController.swift */; };
 		11C266391FD87CA20051AC05 /* MisPropiedadesCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C266381FD87CA20051AC05 /* MisPropiedadesCellController.swift */; };
 		11C2663B1FD89D6C0051AC05 /* SubirPropiedadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2663A1FD89D6C0051AC05 /* SubirPropiedadViewController.swift */; };
 		11C2663D1FD8CABB0051AC05 /* DetallesInmuebleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2663C1FD8CABB0051AC05 /* DetallesInmuebleController.swift */; };
@@ -132,7 +131,6 @@
 		117DC6BD1FD7346D0009F6AB /* menu-vertical-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-vertical-24.png"; sourceTree = "<group>"; };
 		117DC6BF1FD738460009F6AB /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		11C266341FD768D00051AC05 /* PropiedadesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropiedadesController.swift; sourceTree = "<group>"; };
-		11C266361FD87A850051AC05 /* MisPropiedadesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MisPropiedadesController.swift; sourceTree = "<group>"; };
 		11C266381FD87CA20051AC05 /* MisPropiedadesCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MisPropiedadesCellController.swift; sourceTree = "<group>"; };
 		11C2663A1FD89D6C0051AC05 /* SubirPropiedadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubirPropiedadViewController.swift; sourceTree = "<group>"; };
 		11C2663C1FD8CABB0051AC05 /* DetallesInmuebleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetallesInmuebleController.swift; sourceTree = "<group>"; };
@@ -297,10 +295,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		526DC5F41FB2396B007CD85F /* Images */ = {
+		52495A2B1FD8D10F00E5F362 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 				52495A281FD8C87900E5F362 /* revimexBienvenida.jpg */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		526DC5F41FB2396B007CD85F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				117DC6BF1FD738460009F6AB /* pencil.png */,
+				117DC6BD1FD7346D0009F6AB /* menu-vertical-24.png */,
 				529810B71FD61EC0002723D1 /* imagenNoEncontrada.png */,
 				1125AA5A1FD5E61F00B26316 /* menu-horizontal-100.png */,
 				5231C1071FCD0FA200ED4C54 /* favoritoSeleccionado.png */,
@@ -385,6 +392,7 @@
 				52B720081FA785F500F447DA /* Products */,
 				526DC6221FB52CAC007CD85F /* Frameworks */,
 				3BD06E1923E8E542D8206FF3 /* Pods */,
+				52495A2B1FD8D10F00E5F362 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -413,7 +421,6 @@
 				5221BE1A1FBF77D000D0F89C /* FavoritesController.swift */,
 				52B7200E1FA785F500F447DA /* Main.storyboard */,
 				11C2663A1FD89D6C0051AC05 /* SubirPropiedadViewController.swift */,
-				11C266361FD87A850051AC05 /* MisPropiedadesController.swift */,
 				11C266381FD87CA20051AC05 /* MisPropiedadesCellController.swift */,
 				11C266341FD768D00051AC05 /* PropiedadesController.swift */,
 				5221BDFC1FBA83FD00D0F89C /* Utilities.swift */,
@@ -817,7 +824,6 @@
 				52B7200B1FA785F500F447DA /* AppDelegate.swift in Sources */,
 				11C266351FD768D00051AC05 /* PropiedadesController.swift in Sources */,
 				11C2663D1FD8CABB0051AC05 /* DetallesInmuebleController.swift in Sources */,
-				11C266371FD87A850051AC05 /* MisPropiedadesController.swift in Sources */,
 				52A4C02C1FACD411003CAF69 /* Details.swift in Sources */,
 				11C2663B1FD89D6C0051AC05 /* SubirPropiedadViewController.swift in Sources */,
 			);

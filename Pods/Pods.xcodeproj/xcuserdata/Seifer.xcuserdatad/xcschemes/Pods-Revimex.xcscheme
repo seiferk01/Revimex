@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B7A07259278281349C9DC0D1B010355A"
+               BlueprintIdentifier = "D8D9D7A577351377D70DA08100313101"
                BuildableName = "Pods_Revimex.framework"
                BlueprintName = "Pods-Revimex"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B7A07259278281349C9DC0D1B010355A"
+            BlueprintIdentifier = "D8D9D7A577351377D70DA08100313101"
             BuildableName = "Pods_Revimex.framework"
             BlueprintName = "Pods-Revimex"
             ReferencedContainer = "container:Pods.xcodeproj">

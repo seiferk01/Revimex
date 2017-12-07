@@ -137,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftM-gm-waQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-358" y="2250"/>
+            <point key="canvasLocation" x="-308" y="2661"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hA4-s1-IbA">
@@ -255,6 +255,51 @@
             </objects>
             <point key="canvasLocation" x="-450" y="456"/>
         </scene>
+        <!--Lineas Info Controller-->
+        <scene sceneID="bYI-GI-8oE">
+            <objects>
+                <viewController id="HWC-lY-NMN" customClass="LineasInfoController" customModule="Revimex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6og-4k-CTN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EM1-Do-pGJ">
+                                <rect key="frame" x="41" y="147" width="292" height="372"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pI6-HP-jlC">
+                                <rect key="frame" x="41" y="89" width="292" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ld1-6N-3he">
+                                <rect key="frame" x="107" y="547" width="160" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.27435821294784546" green="0.27839317917823792" blue="0.28251999616622925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Comenzar">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="TBm-qd-8Mt"/>
+                    </view>
+                    <connections>
+                        <outlet property="botonComenzar" destination="Ld1-6N-3he" id="jeR-EJ-C8b"/>
+                        <outlet property="descripcion" destination="EM1-Do-pGJ" id="2bL-5v-Y0m"/>
+                        <outlet property="titulo" destination="pI6-HP-jlC" id="jHi-Jf-Nzv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="181-Ny-jvI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="85.599999999999994" y="1304.7976011994003"/>
+        </scene>
         <!--Stock-->
         <scene sceneID="pou-me-jhB">
             <objects>
@@ -305,12 +350,18 @@
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Referencia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jul-dd-JYg">
                                                             <rect key="frame" x="263" y="191" width="82" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="82" id="In2-8H-4U3"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ik-WH-w60">
                                                             <rect key="frame" x="11" y="11" width="352" height="214"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="214" id="W7j-Uu-afK"/>
+                                                            </constraints>
                                                             <connections>
                                                                 <action selector="irDetalles:" destination="9d3-7S-YKz" eventType="touchUpInside" id="Jwx-qH-soU"/>
                                                                 <segue destination="bCG-VS-rd4" kind="show" identifier="irDetalles" id="aZI-9L-R01"/>
@@ -318,6 +369,7 @@
                                                         </button>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="jul-dd-JYg" firstAttribute="leading" secondItem="7K5-5y-6zI" secondAttribute="trailing" constant="38" id="110-Ib-Psl"/>
                                                         <constraint firstItem="7K5-5y-6zI" firstAttribute="top" secondItem="n7k-vK-cjQ" secondAttribute="bottom" constant="11" id="2nG-X9-Yzq"/>
                                                         <constraint firstItem="n7k-vK-cjQ" firstAttribute="trailing" secondItem="7K5-5y-6zI" secondAttribute="trailing" id="41h-7r-OLK"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="jul-dd-JYg" secondAttribute="trailing" constant="10" id="4kJ-oE-yVC"/>
@@ -356,9 +408,24 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NsD-Qn-izI">
                                         <rect key="frame" x="8" y="318" width="359" height="242"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conoce nuestras lineas de negocios:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ef5-hx-Bvx">
+                                                <rect key="frame" x="0.0" y="-7" width="359" height="25"/>
+                                                <color key="backgroundColor" red="0.27435821294784546" green="0.27839317917823792" blue="0.28251999616622925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="iFn-VT-u9U"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="Ef5-hx-Bvx" firstAttribute="top" secondItem="NsD-Qn-izI" secondAttribute="top" constant="-7" id="GqZ-hT-Src"/>
                                             <constraint firstAttribute="height" constant="242" id="TaA-Q7-DnC"/>
+                                            <constraint firstItem="Ef5-hx-Bvx" firstAttribute="leading" secondItem="NsD-Qn-izI" secondAttribute="leading" id="Xgh-aF-koh"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ef5-hx-Bvx" secondAttribute="trailing" id="hq1-wQ-7XS"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0s-3V-udZ">
@@ -377,7 +444,7 @@
                                         <rect key="frame" x="138" y="254" width="99" height="21"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -417,6 +484,7 @@
                     <connections>
                         <outlet property="contenedorVista" destination="KeU-kx-CpT" id="l8J-QJ-8Xl"/>
                         <outlet property="etiquetaBienvenida" destination="P61-KE-Kob" id="7nK-ng-ZTR"/>
+                        <outlet property="headerLineas" destination="Ef5-hx-Bvx" id="z0F-P6-qn7"/>
                         <outlet property="imagenBinvenida" destination="GEf-io-2nY" id="65d-wK-9wi"/>
                         <outlet property="lineasDeNegocio" destination="NsD-Qn-izI" id="C0t-OD-hkP"/>
                         <outlet property="registroBtn" destination="j0s-3V-udZ" id="LMc-Ha-xqt"/>
@@ -424,11 +492,12 @@
                         <segue destination="bCG-VS-rd4" kind="show" id="Jc2-OJ-Tv8"/>
                         <segue destination="4ck-kO-hfk" kind="show" identifier="stockToLogin" id="QYd-vS-5Ig"/>
                         <segue destination="WpA-zh-zEv" kind="show" identifier="stockToInfo" id="B8x-QX-vSE"/>
+                        <segue destination="HWC-lY-NMN" kind="show" identifier="stockToLineasInfo" id="Tgb-ft-bgy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQh-Uf-sya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1016.8" y="1304.3478260869567"/>
+            <point key="canvasLocation" x="1020" y="1391"/>
         </scene>
         <!--Buscar-->
         <scene sceneID="gMF-Bz-cBW">
@@ -686,7 +755,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5vs-3L-fHN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1881" y="2251"/>
+            <point key="canvasLocation" x="1881" y="2570"/>
         </scene>
         <!--Info User Controller-->
         <scene sceneID="wZ4-Bb-RtN">
@@ -899,7 +968,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Jc2-OJ-Tv8"/>
-        <segue reference="h0d-7C-YOx"/>
+        <segue reference="wmC-0K-PaR"/>
         <segue reference="QYd-vS-5Ig"/>
     </inferredMetricsTieBreakers>
 </document>

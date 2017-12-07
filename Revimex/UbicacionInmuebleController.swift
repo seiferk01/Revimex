@@ -82,16 +82,6 @@ class UbicacionInmuebleController: FormViewController {
     }
     
     private func events(){
-        codeZip.onChange({row in
-            do{
-                let zip:Int = Int(row.value!)!;
-                print("\(zip)");
-            }catch{
-                let alert = UIAlertController(title: "Error", message: "Codigo postal invalido", preferredStyle: UIAlertControllerStyle.alert);
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert,animated:true,completion:nil);
-            }
-        })
     }
     
     override func didReceiveMemoryWarning() {

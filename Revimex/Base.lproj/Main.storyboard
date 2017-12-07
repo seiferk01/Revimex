@@ -514,7 +514,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1RT-0N-KRb">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="545"/>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZM1-N9-29A">
                                 <rect key="frame" x="319" y="607" width="40" height="34"/>
@@ -543,10 +543,10 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="CD4-lA-N2p" firstAttribute="top" secondItem="ZM1-N9-29A" secondAttribute="top" id="1ar-sL-2nL"/>
-                            <constraint firstItem="1RT-0N-KRb" firstAttribute="bottom" secondItem="KSz-s9-3hb" secondAttribute="bottom" id="7Jm-k1-AZH"/>
+                            <constraint firstItem="1RT-0N-KRb" firstAttribute="bottom" secondItem="KSz-s9-3hb" secondAttribute="bottom" constant="-58" id="7Jm-k1-AZH"/>
                             <constraint firstItem="CD4-lA-N2p" firstAttribute="baseline" secondItem="ZM1-N9-29A" secondAttribute="firstBaseline" id="8nF-Ha-EMp"/>
                             <constraint firstItem="ZM1-N9-29A" firstAttribute="trailing" secondItem="RWT-v1-S5S" secondAttribute="trailingMargin" id="C0r-xz-3dp"/>
                             <constraint firstAttribute="trailing" secondItem="1RT-0N-KRb" secondAttribute="trailing" id="O04-Yi-C6D"/>
@@ -583,10 +583,10 @@
             </objects>
             <point key="canvasLocation" x="5338" y="2186"/>
         </scene>
-        <!--View Controller-->
+        <!--Ubicacion Inmueble Controller-->
         <scene sceneID="gzd-oc-dTs">
             <objects>
-                <viewController storyboardIdentifier="UbicacionInmueble" id="LAt-YX-GZY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UbicacionInmueble" id="LAt-YX-GZY" customClass="UbicacionInmuebleController" customModule="Revimex" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fk8-et-u2L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

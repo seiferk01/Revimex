@@ -45,13 +45,16 @@ class SubirPropiedadViewController: UIViewController{
         
         
         btnSig = Utilities.genearSombras(btnSig);
-        btnSig.titleLabel?.font = UIFont.fontAwesome(ofSize: 38);
+        btnSig.layer.cornerRadius = 18;
+        btnSig.titleLabel?.font = UIFont.fontAwesome(ofSize: 34);
         btnSig.setTitle(String.fontAwesomeIcon(name: .chevronRight), for: .normal);
+        btnSig.frame.size = CGSize(width: 40, height: 40);
         
         btnAnt = Utilities.genearSombras(btnAnt);
-        btnAnt.titleLabel?.font = UIFont.fontAwesome(ofSize: 38);
+        btnAnt.layer.cornerRadius = 18;
+        btnAnt.titleLabel?.font = UIFont.fontAwesome(ofSize: 34);
         btnAnt.setTitle(String.fontAwesomeIcon(name: .chevronLeft), for: .normal);
-        
+        btnAnt.frame.size = CGSize(width: 40, height: 40);
         
         actualizar();
         

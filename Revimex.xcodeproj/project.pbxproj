@@ -14,6 +14,7 @@
 		11C266391FD87CA20051AC05 /* MisPropiedadesCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C266381FD87CA20051AC05 /* MisPropiedadesCellController.swift */; };
 		11C2663B1FD89D6C0051AC05 /* SubirPropiedadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2663A1FD89D6C0051AC05 /* SubirPropiedadViewController.swift */; };
 		11C2663D1FD8CABB0051AC05 /* DetallesInmuebleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2663C1FD8CABB0051AC05 /* DetallesInmuebleController.swift */; };
+		11C2663F1FD9E6430051AC05 /* UbicacionInmuebleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2663E1FD9E6430051AC05 /* UbicacionInmuebleController.swift */; };
 		3261DDDE92CC7379B15839F6 /* Pods_Revimex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7157B05E32A444E4251D9884 /* Pods_Revimex.framework */; };
 		48B9B14F0C637A1897AF24BE /* Pods_RevimexUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4804135DFD212E74478102 /* Pods_RevimexUITests.framework */; };
 		521E56131FC5F9F900D38947 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521E561A1FC5F9F900D38947 /* Bolts.framework */; };
@@ -134,6 +135,7 @@
 		11C266381FD87CA20051AC05 /* MisPropiedadesCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MisPropiedadesCellController.swift; sourceTree = "<group>"; };
 		11C2663A1FD89D6C0051AC05 /* SubirPropiedadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubirPropiedadViewController.swift; sourceTree = "<group>"; };
 		11C2663C1FD8CABB0051AC05 /* DetallesInmuebleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetallesInmuebleController.swift; sourceTree = "<group>"; };
+		11C2663E1FD9E6430051AC05 /* UbicacionInmuebleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbicacionInmuebleController.swift; sourceTree = "<group>"; };
 		38C718A7EB59A146890BB452 /* Pods-Revimex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revimex.release.xcconfig"; path = "Pods/Target Support Files/Pods-Revimex/Pods-Revimex.release.xcconfig"; sourceTree = "<group>"; };
 		4A7853774D5C0684B9B300A4 /* Pods-RevimexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevimexTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RevimexTests/Pods-RevimexTests.release.xcconfig"; sourceTree = "<group>"; };
 		521E561A1FC5F9F900D38947 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -429,6 +431,7 @@
 				52B720131FA785F500F447DA /* LaunchScreen.storyboard */,
 				52B720161FA785F500F447DA /* Info.plist */,
 				11C2663C1FD8CABB0051AC05 /* DetallesInmuebleController.swift */,
+				11C2663E1FD9E6430051AC05 /* UbicacionInmuebleController.swift */,
 			);
 			path = Revimex;
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52A116D91FA7B50C002F6B59 /* TableViewCell.swift in Sources */,
+				11C2663F1FD9E6430051AC05 /* UbicacionInmuebleController.swift in Sources */,
 				52B720401FA78F4700F447DA /* StockController.swift in Sources */,
 				11C266391FD87CA20051AC05 /* MisPropiedadesCellController.swift in Sources */,
 				529810B21FD61657002723D1 /* InfoUserController.swift in Sources */,

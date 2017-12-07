@@ -282,10 +282,10 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UiQ-R2-9Jz">
-                                                            <rect key="frame" x="10" y="10" width="355" height="218"/>
+                                                            <rect key="frame" x="10" y="10" width="353" height="218"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0qN-Dk-GQl">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="218"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="353" height="218"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="250" id="4zG-ag-4jJ"/>
                                                                     </constraints>
@@ -885,7 +885,7 @@
                                 <rect key="frame" x="10" y="54" width="355" height="230"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y3n-u4-JLM">
-                                        <rect key="frame" x="20" y="30" width="315" height="180"/>
+                                        <rect key="frame" x="20" y="1466" width="315" height="0.0"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1155,6 +1155,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Jc2-OJ-Tv8"/>
         <segue reference="h0d-7C-YOx"/>
-        <segue reference="QYd-vS-5Ig"/>
+        <segue reference="DwE-I5-CN2"/>
     </inferredMetricsTieBreakers>
 </document>

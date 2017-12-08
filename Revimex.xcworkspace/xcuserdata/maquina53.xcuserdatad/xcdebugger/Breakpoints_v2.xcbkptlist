@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Revimex/DetallesInmuebleController.swift"
+            timestampString = "534377133.888051"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Revimex/DetallesInmuebleController.swift"
+            timestampString = "534377133.888377"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Revimex.DetallesInmuebleController.viewDidLoad() -&gt; ()"
+                  moduleName = "Revimex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maquina53/XCodeProjects/Revimex/Revimex/DetallesInmuebleController.swift"
+                  timestampString = "534366688.771606"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "262">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Eureka.ActionSheetRow&lt;Swift.String&gt;) -&gt; () in Revimex.DetallesInmuebleController.viewDidLoad() -&gt; ()"
+                  moduleName = "Revimex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maquina53/XCodeProjects/Revimex/Revimex/DetallesInmuebleController.swift"
+                  timestampString = "534366688.774184"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "21">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Revimex/DetallesInmuebleController.swift"
+            timestampString = "534377133.888451"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Revimex.DetallesInmuebleController.viewDidLoad() -&gt; ()"
+                  moduleName = "Revimex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maquina53/XCodeProjects/Revimex/Revimex/DetallesInmuebleController.swift"
+                  timestampString = "534366840.353893"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "338">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Eureka.ActionSheetRow&lt;Swift.String&gt;) -&gt; () in Revimex.DetallesInmuebleController.viewDidLoad() -&gt; ()"
+                  moduleName = "Revimex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maquina53/XCodeProjects/Revimex/Revimex/DetallesInmuebleController.swift"
+                  timestampString = "534366840.357328"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "453">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Eureka.ActionSheetRow&lt;Swift.String&gt;) -&gt; () in Revimex.DetallesInmuebleController.viewDidLoad() -&gt; ()"
+                  moduleName = "Revimex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maquina53/XCodeProjects/Revimex/Revimex/DetallesInmuebleController.swift"
+                  timestampString = "534366840.36133"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "21">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Revimex/DetallesInmuebleController.swift"
+            timestampString = "534377133.888512"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Revimex.DetallesInmuebleController.viewDidLoad() -&gt; ()"
+                  moduleName = "Revimex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maquina53/XCodeProjects/Revimex/Revimex/DetallesInmuebleController.swift"
+                  timestampString = "534366688.788991"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "383">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Eureka.ActionSheetRow&lt;Swift.String&gt;) -&gt; () in Revimex.DetallesInmuebleController.viewDidLoad() -&gt; ()"
+                  moduleName = "Revimex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maquina53/XCodeProjects/Revimex/Revimex/DetallesInmuebleController.swift"
+                  timestampString = "534366688.790952"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "453">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Eureka.ActionSheetRow&lt;Swift.String&gt;) -&gt; () in Revimex.DetallesInmuebleController.viewDidLoad() -&gt; ()"
+                  moduleName = "Revimex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maquina53/XCodeProjects/Revimex/Revimex/DetallesInmuebleController.swift"
+                  timestampString = "534366688.793058"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "21">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Revimex/DetallesInmuebleController.swift"
+            timestampString = "534377133.888572"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

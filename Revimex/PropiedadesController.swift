@@ -51,6 +51,11 @@ class PropiedadesController: UIViewController {
             let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(changeContentView(_:)));
             rightSwipe.direction = .right;
             
+            if(misPropiedades.data.count <= 0 ){
+                labelSeccion.text = "No hay propiedades";
+                labelSeccion.isHidden = false;
+            }
+            
         }else{
             labelSeccion.isHidden = false;
             sgCtrlPropiedades.isHidden = true;

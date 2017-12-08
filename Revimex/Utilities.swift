@@ -124,6 +124,12 @@ class Utilities: NSObject {
         return emailTest.evaluate(with: testStr)
     }
     
+    static func isValidZip(_ zipcode: String)-> Bool{
+        let zipRegEx = "0[1-9][0-9]{3}|[1-4][0-9]{4}|5[0-9][0-9]{3}";
+        let zipTest = NSPredicate(format:"SELF MATCHES %@",zipRegEx);
+        return zipTest.evaluate(with: zipcode);
+    }
+    
     //crea el fondo del UIActivityIndicatorView
     static func activityIndicatorBackground(activityIndicator: UIActivityIndicatorView)->UIView{
         

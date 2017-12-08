@@ -17,7 +17,7 @@ class MisPropiedadesController: UIViewController,UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        data = ["1 test","2 test","3 test"];
+        data = [];
         tableMisPropiedades.dataSource = self;
         tableMisPropiedades.translatesAutoresizingMaskIntoConstraints = true;
     }

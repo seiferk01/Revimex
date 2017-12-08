@@ -517,11 +517,12 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="545"/>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZM1-N9-29A">
-                                <rect key="frame" x="319" y="607" width="40" height="34"/>
+                                <rect key="frame" x="319" y="617" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="MMk-az-pxf"/>
+                                    <constraint firstAttribute="width" constant="40" id="WB1-xH-i2H"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="0.0" maxY="0.0"/>
                                 <state key="normal">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -530,11 +531,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CD4-lA-N2p">
-                                <rect key="frame" x="16" y="607" width="40" height="40"/>
+                                <rect key="frame" x="16" y="617" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="NES-Ar-kqT"/>
+                                    <constraint firstAttribute="width" constant="40" id="Trx-Zp-6Ed"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="5" maxX="5" maxY="0.0"/>
                                 <state key="normal">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -545,16 +547,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="CD4-lA-N2p" firstAttribute="top" secondItem="ZM1-N9-29A" secondAttribute="top" id="1ar-sL-2nL"/>
                             <constraint firstItem="1RT-0N-KRb" firstAttribute="bottom" secondItem="KSz-s9-3hb" secondAttribute="bottom" constant="-58" id="7Jm-k1-AZH"/>
-                            <constraint firstItem="CD4-lA-N2p" firstAttribute="baseline" secondItem="ZM1-N9-29A" secondAttribute="firstBaseline" id="8nF-Ha-EMp"/>
-                            <constraint firstItem="ZM1-N9-29A" firstAttribute="trailing" secondItem="RWT-v1-S5S" secondAttribute="trailingMargin" id="C0r-xz-3dp"/>
+                            <constraint firstItem="ZM1-N9-29A" firstAttribute="baseline" secondItem="CD4-lA-N2p" secondAttribute="baseline" id="Bfe-kY-XYw"/>
+                            <constraint firstItem="ZM1-N9-29A" firstAttribute="trailing" secondItem="RWT-v1-S5S" secondAttribute="trailingMargin" id="DJ6-K6-JOF"/>
+                            <constraint firstItem="ZM1-N9-29A" firstAttribute="bottom" secondItem="CD4-lA-N2p" secondAttribute="bottom" id="JSi-YZ-qzA"/>
+                            <constraint firstItem="CD4-lA-N2p" firstAttribute="top" secondItem="1RT-0N-KRb" secondAttribute="bottom" constant="8" symbolic="YES" id="Nbu-5z-oB5"/>
                             <constraint firstAttribute="trailing" secondItem="1RT-0N-KRb" secondAttribute="trailing" id="O04-Yi-C6D"/>
-                            <constraint firstAttribute="bottom" secondItem="CD4-lA-N2p" secondAttribute="bottom" constant="20" symbolic="YES" id="UnU-PN-yWk"/>
-                            <constraint firstItem="CD4-lA-N2p" firstAttribute="top" secondItem="KSz-s9-3hb" secondAttribute="top" constant="543" id="YPT-sK-iqd"/>
+                            <constraint firstItem="ZM1-N9-29A" firstAttribute="firstBaseline" secondItem="CD4-lA-N2p" secondAttribute="firstBaseline" id="bzc-w9-5Ou"/>
                             <constraint firstItem="1RT-0N-KRb" firstAttribute="leading" secondItem="RWT-v1-S5S" secondAttribute="leading" id="ciK-f5-VFi"/>
                             <constraint firstItem="1RT-0N-KRb" firstAttribute="top" secondItem="KSz-s9-3hb" secondAttribute="top" id="gUm-Yl-rIP"/>
-                            <constraint firstItem="CD4-lA-N2p" firstAttribute="leading" secondItem="RWT-v1-S5S" secondAttribute="leadingMargin" id="uwm-N1-Fge"/>
+                            <constraint firstItem="KSz-s9-3hb" firstAttribute="bottom" secondItem="CD4-lA-N2p" secondAttribute="bottom" constant="10" id="sda-4R-r8q"/>
+                            <constraint firstItem="ZM1-N9-29A" firstAttribute="top" secondItem="CD4-lA-N2p" secondAttribute="top" id="yhJ-3k-PqZ"/>
+                            <constraint firstItem="CD4-lA-N2p" firstAttribute="leading" secondItem="RWT-v1-S5S" secondAttribute="leadingMargin" id="zMX-t2-QuD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KSz-s9-3hb"/>
                     </view>

@@ -32,18 +32,21 @@ class UbicacionInmuebleController: FormViewController {
         
         edo = ActionSheetRow<String>(){row in
             row.title = "Estado";
+            row.options = [""];
             row.value = "";
             row.tag = "edo";
         };
         
         mun = ActionSheetRow<String>(){row in
             row.title = "Municipio";
+            row.options = [""];
             row.value = "";
             row.tag = "mun"
         };
         
         col = ActionSheetRow<String>{row in
             row.title = "Colonia";
+            row.options = [""];
             row.value = "";
             row.tag = "col";
         }
@@ -73,6 +76,7 @@ class UbicacionInmuebleController: FormViewController {
         
         tipoCalle = ActionSheetRow<String>(){row in
             row.title = "Tipo de Calle";
+            row.options = [""];
             row.value = "";
             row.tag = "tipoCalle";
         }
@@ -82,6 +86,13 @@ class UbicacionInmuebleController: FormViewController {
     }
     
     private func events(){
+        codeZip.onChange({ row in
+            if(row.value != nil){
+                if(Utilities.isValidZip((row.value)!)){
+                    print(row.value as Any);
+                }
+            }
+        })
     }
     
     override func didReceiveMemoryWarning() {

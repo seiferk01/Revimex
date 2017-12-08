@@ -247,7 +247,7 @@ class InfoUserController: UIViewController {
                     }
                 };
             }
-            }.resume();
+        }.resume();
         
         
     }

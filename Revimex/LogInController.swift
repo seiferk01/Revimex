@@ -55,9 +55,11 @@ class LogInController: UIViewController {
                 break
             case 1:
                 print("vista uno")
+                invitadoBtn.isHidden = true
                 break
             case 2:
                 print("vista dos")
+                invitadoBtn.isHidden = true
                 break
             default:
                 invitadoBtn.isHidden = true

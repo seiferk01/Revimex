@@ -12,8 +12,22 @@ import Darwin
 
 class StockController: UIViewController,UITableViewDataSource {
     
-    //referencia a tabla en la vista
+    //variables de referencia en la vista
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var contenedorVista: UIScrollView!
+    @IBOutlet weak var imagenBinvenida: UIImageView!
+    @IBOutlet weak var registroBtn: UIButton!
+    @IBOutlet weak var etiquetaBienvenida: UILabel!
+    @IBOutlet weak var headerLineas: UILabel!
+    @IBOutlet weak var lineasDeNegocio: UIView!
+    
+    //medidas de la barra de navegacion
+    var navigationBarSizeWidth: CGFloat = 0
+    var navigationBarSizeHeigth: CGFloat = 0
+    
+    //variables de lineas de negocio
+    let contenedorLineas = UIScrollView()
+    var arrayLineas = [UIImageView]()
     
     //variables para la siguiente url de cada pagina
     var paginaSiguiente: String = "http://18.221.106.92/api/public/propiedades/lista"
@@ -43,54 +57,26 @@ class StockController: UIViewController,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //configuracion de la vista de la barra de navegacion
-        navigationController?.navigationBar.isHidden = false
+        //medidas de la barra de navegacion
         let navigationBarSize = navigationController?.navigationBar.bounds
-        let navigationBarSizeWidth = navigationBarSize?.width
-        let navigationBarSizeHeigth = navigationBarSize?.height
+        navigationBarSizeWidth = (navigationBarSize?.width)!
+        navigationBarSizeHeigth = (navigationBarSize?.height)!
         
-        navigationController?.navigationBar.barTintColor = UIColor.black
-        navigationController?.navigationBar.tintColor = UIColor.white
+        //genera la barra de navegacion
+        crearBarraNavegacion()
         
-        let logo = UIImage(named: "revimex.png")
-        let contenedorLogo = UIImageView(image:logo)
-        contenedorLogo.frame = CGRect(x: navigationBarSizeWidth!*0.3,y: 0.0,width: navigationBarSizeWidth!*0.4,height: navigationBarSizeHeigth!)
+        //inserta la imagen de Bienvenida
+        imagenBinvenida.image = UIImage(named: "revimexBienvenida.jpg")
         
-        navigationController?.navigationBar.addSubview(contenedorLogo)
+        //genera los botones de ir a perfil o registrarse
+        creaBotonesBarra()
         
-        //si ya se tiene id de usuario miestra el boton de cuenta, si no el de signin
-        if (UserDefaults.standard.object(forKey: "userId") as? Int) != nil{
-            let tapGestureRecognizerImgAcct = UITapGestureRecognizer(target: self, action: #selector(imagenCuentaTapped(tapGestureRecognizer:)))
-            
-            
-            let imagenCuenta = UIImage(named: "cuenta.png")
-            
-            //imagenCuentaBtn.tag = 1;
-            imagenCuentaBtn.frame = CGRect(x: navigationBarSizeWidth!-navigationBarSizeHeigth!,y: 0.0,width: navigationBarSizeHeigth!,height: navigationBarSizeHeigth!)
-            imagenCuentaBtn.setBackgroundImage(imagenCuenta, for: .normal)
-            imagenCuentaBtn.addGestureRecognizer(tapGestureRecognizerImgAcct)
-            
-            navigationController?.navigationBar.addSubview(imagenCuentaBtn)
-        }
-        else{
-            
-            let tapGestureRecognizerSignIn = UITapGestureRecognizer(target: self, action: #selector(incioSesionTapped(tapGestureRecognizer:)))
-            
-            //incioSesionBtn.tag = 2;
-            incioSesionBtn.setTitle("SignIn", for: .normal)
-            incioSesionBtn.frame = CGRect(x: navigationBarSizeWidth! - (navigationBarSizeWidth! * (0.2)),y: 0.0,width: navigationBarSizeWidth! * (0.2),height: navigationBarSizeHeigth!)
-            incioSesionBtn.layer.masksToBounds = false
-            incioSesionBtn.layer.shadowRadius = 1.0
-            incioSesionBtn.layer.shadowColor = UIColor.black.cgColor
-            incioSesionBtn.layer.shadowOffset = CGSize(width: 0.7,height: 0.7)
-            incioSesionBtn.layer.shadowOpacity = 0.5
-            incioSesionBtn.addGestureRecognizer(tapGestureRecognizerSignIn)
-            navigationController?.navigationBar.addSubview(incioSesionBtn)
-        }
-        
+        //genera el carrusel de lineas de negocio
+        creaLineasDeNegocio()
+        Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(moveToNextPage), userInfo: nil, repeats: true)
         
         //llamado a la lista de propiedades
-        requestData(url: paginaSiguiente)
+        creaTablaPropiedades(url: paginaSiguiente)
         
     }
     
@@ -99,8 +85,108 @@ class StockController: UIViewController,UITableViewDataSource {
         
     }
     
+    //***********************funciones para crear la vista***************************
+    func crearBarraNavegacion(){
+        
+        //configuracion de la vista de la barra de navegacion
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.tintColor = UIColor.white
+        
+        let logo = UIImage(named: "revimex.png")
+        let contenedorLogo = UIImageView(image:logo)
+        contenedorLogo.frame = CGRect(x: navigationBarSizeWidth*0.3,y: 0.0,width: navigationBarSizeWidth*0.4,height: navigationBarSizeHeigth)
+        
+        navigationController?.navigationBar.addSubview(contenedorLogo)
+        
+    }
+    
+    func creaBotonesBarra(){
+        
+        //si ya se tiene id de usuario muestra el boton de cuenta, si no el de signin
+        if (UserDefaults.standard.object(forKey: "userId") as? Int) != nil{
+            
+            registroBtn.isHidden = true
+            etiquetaBienvenida.isHidden = false
+            
+            let tapGestureRecognizerImgAcct = UITapGestureRecognizer(target: self, action: #selector(imagenCuentaTapped(tapGestureRecognizer:)))
+            
+            
+            let imagenCuenta = UIImage(named: "cuenta.png")
+            
+            imagenCuentaBtn.frame = CGRect(x: navigationBarSizeWidth-navigationBarSizeHeigth,y: 0.0,width: navigationBarSizeHeigth,height: navigationBarSizeHeigth)
+            imagenCuentaBtn.setBackgroundImage(imagenCuenta, for: .normal)
+            imagenCuentaBtn.addGestureRecognizer(tapGestureRecognizerImgAcct)
+            
+            navigationController?.navigationBar.addSubview(imagenCuentaBtn)
+        }
+        else{
+            
+            registroBtn.isHidden = false
+            etiquetaBienvenida.isHidden = true
+            
+            let tapGestureRecognizerSignIn = UITapGestureRecognizer(target: self, action: #selector(incioSesionTapped(tapGestureRecognizer:)))
+            
+            incioSesionBtn.setTitle("SignIn", for: .normal)
+            incioSesionBtn.frame = CGRect(x: navigationBarSizeWidth - (navigationBarSizeWidth * (0.2)),y: 0.0,width: navigationBarSizeWidth * (0.2),height: navigationBarSizeHeigth)
+            incioSesionBtn.layer.masksToBounds = false
+            incioSesionBtn.layer.shadowRadius = 1.0
+            incioSesionBtn.layer.shadowColor = UIColor.black.cgColor
+            incioSesionBtn.layer.shadowOffset = CGSize(width: 0.7,height: 0.7)
+            incioSesionBtn.layer.shadowOpacity = 0.5
+            incioSesionBtn.addGestureRecognizer(tapGestureRecognizerSignIn)
+            navigationController?.navigationBar.addSubview(incioSesionBtn)
+        }
+    }
+    
+    func creaLineasDeNegocio(){
+        //genera el carrusel de lineas de negocio
+        
+        let clienteFinal = UIImageView(image: UIImage(named: "clienteFinal.jpg"))
+        let mercadoAbierto = UIImageView(image: UIImage(named: "mercadoAbierto.jpeg"))
+        let inversionista = UIImageView(image: UIImage(named: "inversionista.jpg"))
+        let brokerage = UIImageView(image: UIImage(named: "brokerage.jpeg"))
+        
+        arrayLineas.append(clienteFinal)
+        arrayLineas.append(mercadoAbierto)
+        arrayLineas.append(inversionista)
+        arrayLineas.append(brokerage)
+        
+        contenedorLineas.frame = CGRect(x: 0,y: 0,width: lineasDeNegocio.bounds.width,height: lineasDeNegocio.bounds.height)
+        contenedorLineas.contentSize = CGSize(width: (lineasDeNegocio.bounds.width * CGFloat(arrayLineas.count)), height: lineasDeNegocio.bounds.height)
+        contenedorLineas.isPagingEnabled = true
+        contenedorLineas.showsHorizontalScrollIndicator = false
+        contenedorLineas.isUserInteractionEnabled = true
+        
+        for (index, linea) in arrayLineas.enumerated() {
+            linea.frame = CGRect(x: (lineasDeNegocio.bounds.width * CGFloat(index)),y: 0,width: lineasDeNegocio.bounds.width,height: lineasDeNegocio.bounds.height)
+            
+            contenedorLineas.addSubview(linea)
+        }
+        
+        let tapGestureRecognizerLinea = UITapGestureRecognizer(target: self, action: #selector(irLinea(tapGestureRecognizer: )))
+        
+        lineasDeNegocio.addGestureRecognizer(tapGestureRecognizerLinea)
+        
+        lineasDeNegocio.addSubview(contenedorLineas)
+        lineasDeNegocio.bringSubview(toFront: headerLineas)
+        
+    }
+    @objc func moveToNextPage (){
+        
+        let pageWidth:CGFloat = contenedorLineas.frame.width
+        let maxWidth:CGFloat = pageWidth * CGFloat(arrayLineas.count)
+        let contentOffset:CGFloat = contenedorLineas.contentOffset.x
+        
+        var slideToX = contentOffset + pageWidth
+        
+        if  contentOffset + pageWidth == maxWidth {
+            slideToX = 0
+        }
+        contenedorLineas.scrollRectToVisible(CGRect(x:slideToX, y:0, width:pageWidth, height:contenedorLineas.frame.height), animated: true)
+    }
+    
     //llamado a la lista de propiedades
-    func requestData(url: String){
+    func creaTablaPropiedades(url: String){
         
         //indicador de loading
         let activityIndicator = UIActivityIndicatorView()
@@ -220,7 +306,7 @@ class StockController: UIViewController,UITableViewDataSource {
         
         if arregloOfertas.count == (indexPath.row + 1){
             if haySiguiente {
-                requestData(url: paginaSiguiente)
+                creaTablaPropiedades(url: paginaSiguiente)
             }
         }
         
@@ -236,6 +322,19 @@ class StockController: UIViewController,UITableViewDataSource {
     
     @objc func imagenCuentaTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         performSegue(withIdentifier: "stockToInfo", sender: nil)
+    }
+    
+    @IBAction func goToLogin(_ sender: Any) {
+        //oculta la barra de navegacion del login
+        navBarStyleCase = 1
+        performSegue(withIdentifier: "stockToLogin", sender: nil)
+    }
+    
+    @objc func irLinea(tapGestureRecognizer: UITapGestureRecognizer) {
+        let pageWidth:CGFloat = contenedorLineas.frame.width
+        let contentOffset:CGFloat = contenedorLineas.contentOffset.x
+        lineaSeleccionada = Int(contentOffset)/Int(pageWidth)
+        performSegue(withIdentifier: "stockToLineasInfo", sender: nil)
     }
     
     

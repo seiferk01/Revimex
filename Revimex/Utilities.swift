@@ -9,6 +9,12 @@
 import UIKit
 
 
+/*USERDEAFULTS
+    usuario -> almacena el email del usuario
+    contraseña -> almacena la contraseña de usuario
+    userId -> almacena el id de usuario
+*/
+
 extension UIViewController
 {
     func hideKeyboard()
@@ -85,19 +91,21 @@ var azul = UIColor(hexString: "#48B1F3ff")
 var azulClaro = UIColor(hexString: "#F0F5F6ff")
 var gris = UIColor(hexString: "#3B3B3Bff")
 
-//variable global, obtiene un valor en TableViewCell.swift dependiendo de la propiedad que se selecciono
+//variable global, obtiene un valor en TableViewCell.swift dependiendo de la propiedad que se selecciono(StockConroller,SearchController,DescriptionViewController,FavoritosController,TableViewCell)
 var idOfertaSeleccionada = ""
 
-//botones de la barra de navegacion
+//botones de la barra de navegacion (StockController)
 var incioSesionBtn = UIButton()
 var imagenCuentaBtn = UIButton()
 
-//indica el tipo de estilo para la barra de navegacion
-var withNavBarStyle = true
+//indica el tipo de estilo para la barra de navegacion(LoginController,StockCotroller,FavoritosController,InfoUserController)
 var navBarStyleCase = 0
 
-//bandera para refresacar la vista de favoritos
+//bandera para refresacar la vista de favoritos (DescriptionViewController,FavoritosController)
 var cambioFavoritos = false
+
+//indicador de linea de negocio (StockController,LineasInfoController)
+var lineaSeleccionada = 0
 
 class Utilities: NSObject {
 
